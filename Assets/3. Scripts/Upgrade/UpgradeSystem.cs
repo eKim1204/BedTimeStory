@@ -17,7 +17,6 @@ public class UpgradeSystem : MonoBehaviour
     List<Dictionary<string, object>> dataset;
 
     [HideInInspector] public UnityEvent onItemLocked;
-    [HideInInspector] public UnityEvent onItemSelected;
 
     float hpRecoverRate = 100;
     int hpRecoverCost = 100;
@@ -35,7 +34,6 @@ public class UpgradeSystem : MonoBehaviour
     private void Start()
     {
         onItemLocked.AddListener(ChangeRerollCost);
-        onItemSelected.AddListener(ClosePanel);
 
         Roll();
         SetRecoverButtonText();
@@ -164,13 +162,5 @@ public class UpgradeSystem : MonoBehaviour
         }
 
         rerollButton.GetComponentInChildren<TextMeshProUGUI>().SetText($"Reroll : {rerollCost}");
-    }
-
-    private void ClosePanel()
-    {
-        rerollCost = 0;
-        Roll();
-
-        gameObject.SetActive(false);
     }
 }
