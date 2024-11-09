@@ -10,6 +10,8 @@ using DG.Tweening;
 [RequireComponent(typeof(EnemyAI), typeof(Collider), typeof(Rigidbody) )]
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] Animator aniamtor;
+
     public Transform t;
     public EnemyAI enemyAI;
     public EnemyDataSO enemyData;
@@ -46,7 +48,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (isAlive == false || GamePlayManager.isGamePlaying == false)
+        if (isAlive == false || GamePlayManager.isGamePlaying == false || currHp <= 0)
         {
             return;
         }
@@ -169,14 +171,10 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         _collider.enabled = false;
-        
         DropItem();
-        //
-
-
         enemyState?.OnEnemyDie();
-        
-        Destroy(gameObject);
+        aniamtor.SetBool("isDead", true);
+        Destroy(gameObject, 6.0f);
     }
 
     void DropItem()
