@@ -22,17 +22,19 @@ public class UpgradeSystem : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        ShowUpgradeMenus();
+        Roll();
     }
 
-    void ShowUpgradeMenus()
+    private void Roll()
     {
         foreach (var upgradeMenuItem in upgradeMenuItems)
         {
+            if (upgradeMenuItem.IsLocked)
+                continue;
+
             int randomNumber = UnityEngine.Random.Range(0, dataset.Count);
-            randomNumber = dataset.Count - 1;
             var row = dataset[randomNumber];
 
             int type = Convert.ToInt32(row["Type"]);
@@ -41,5 +43,15 @@ public class UpgradeSystem : MonoBehaviour
 
             upgradeMenuItem.Construct(type, grade, value);
         }
+    }
+
+    public void OnRecoverButtonPressed()
+    {
+        PlayerStats.Instance.Recover(30);
+    }
+
+    public void OnRerollButtonPressed()
+    {
+        Roll();
     }
 }
