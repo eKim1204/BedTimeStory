@@ -51,7 +51,10 @@ public class EnemyAI : MonoBehaviour
 
 
         // 아직 잘 되는 지는 모르겠음.
-        if ( t.position.WithFloorHeight().GetSqrDistWith(target.position.WithFloorHeight()) <= attackRange * attackRange)   // 공격사거리 안 일때,
+        float targetDistSqr =  t.position.WithFloorHeight().GetSqrDistWith(target.position.WithFloorHeight());
+        
+
+        if ( targetDistSqr <= attackRange * attackRange)   // 공격사거리 안 일때,
         {
             OnTargetInAttackRange();
         }
@@ -97,11 +100,11 @@ public class EnemyAI : MonoBehaviour
         navAgent.SetDestination( target.position );    // 타워 쫓음
     }
 
-    void OnTargetInAttackRange()
+    void OnTargetInAttackRange( )
     {
         if( enemy.attackAvailable )
         {
-            enemy.Attack();
+            enemy.Attack( target.position);
         }
         
         navAgent.isStopped = true;

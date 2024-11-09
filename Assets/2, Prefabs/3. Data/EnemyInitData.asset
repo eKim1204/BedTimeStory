@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: EnemyInitData
   m_EditorClassIdentifier: 
   maxHp: 100
-  movementSpeed: 4
+  movementSpeed: 40
   attackSpeed: 2
-  attackRange: 3
+  attackRange: 2
   playerDectectionRange: 10
   dmg: 10
   inc_maxHp: 10
