@@ -2,6 +2,7 @@ using Cinemachine;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class AimStatManager : MonoBehaviour
@@ -15,7 +16,7 @@ public class AimStatManager : MonoBehaviour
 
     [Header("각 행위별 좌표 저장")]
     [SerializeField] Transform camFollowPosTarget;
-    [SerializeField] Transform camFollowPosDashTarget;
+    [SerializeField] Transform camFollowPosRunTarget;
     [SerializeField] Transform camFollowPosAimTarget;
 
     [SerializeField] float mouseSense;
@@ -45,7 +46,9 @@ public class AimStatManager : MonoBehaviour
         // 에임 모드 활성화
         if (Input.GetKey(KeyCode.Mouse1))
             camFollowPos.DOLocalMove(camFollowPosAimTarget.localPosition, 0.25f, false);
+        else if(Input.GetKey(KeyCode.LeftShift))
+            camFollowPos.DOLocalMove(camFollowPosRunTarget.localPosition, 0.25f, false);
         else
-            camFollowPos.DOLocalMove(camFollowPosTarget.localPosition, 0.25f, false);
+            camFollowPos.DOLocalMove(camFollowPosTarget.localPosition, 0.25f, false).SetEase(Ease.OutCubic);
     }
 }
