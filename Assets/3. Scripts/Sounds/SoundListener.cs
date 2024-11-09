@@ -24,7 +24,7 @@ public class SoundListener : MonoBehaviour
 
     public void OnEventRaised(SoundEventSO soundEventSo)
     {
-        response.Invoke(soundEventSo);
+        response.   Invoke(soundEventSo);
     }
 
     //public void SoundPlaySFX(SoundType type)

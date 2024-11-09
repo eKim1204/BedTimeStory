@@ -21,42 +21,19 @@ public class Projectile : MonoBehaviour
 
     protected void Explode()
     {
-        if (trails.Count > 0)
-        {
-            for (int i = 0; i < trails.Count; i++)
-            {
-                trails[i].transform.parent = null;
-                var ps = trails[i].GetComponent<ParticleSystem>();
-                if (ps != null)
-                {
-                    ps.Stop();
-                    Destroy(ps.gameObject, ps.main.duration + ps.main.startLifetime.constantMax);
-                }
-            }
-        }
-        if (hitPrefab != null)
-        {
-            var hitVFX = Instantiate(hitPrefab, transform.position, Quaternion.identity) as GameObject;
+        var hitVFX = Instantiate(hitPrefab, transform.position, Quaternion.identity) as GameObject;
+        hitVFX.transform.position = transform.position;
 
-            var ps = hitVFX.GetComponent<ParticleSystem>();
-            if (ps == null)
-            {
-                var psChild = hitVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
-                Destroy(hitVFX, psChild.main.duration);
-            }
-            else
-                Destroy(hitVFX, ps.main.duration);
-        }
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         // Damage Enemy
-        DamageEnemy(other);
+        //DamageEnemy(other);
         Debug.Log("!");
         Explode();
-        StartCoroutine(DestroyParticle(0f));
-        
+        //StartCoroutine(DestroyParticle(0f));
     }
 
     protected virtual void DamageEnemy(Collider co)
