@@ -35,6 +35,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
     private void Awake()
     {
+        playerStatus = Status.Idle;
         currHP = maxHP;
     }
 
