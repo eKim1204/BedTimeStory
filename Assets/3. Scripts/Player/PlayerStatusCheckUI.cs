@@ -13,6 +13,8 @@ public class PlayerStatusCheckUI : MonoBehaviour
     [SerializeField] private TMP_Text reloadingText;
     [SerializeField] private Image crosshair;
     [SerializeField] private Image crosshair2;
+
+    [SerializeField] private TMP_Text hpText;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +35,10 @@ public class PlayerStatusCheckUI : MonoBehaviour
         bool value = bool.Parse(tArgs.value[0].ToString());
 
         reloadingText.gameObject.SetActive(value);
+    }
+    private void Update()
+    {
+        hpText.text = string.Format("HP:{0}", PlayerStats.Instance.currHP);
     }
     private void HittedEffect(MEventType MEventType, Component Sender, EventArgs args = null)
     {
