@@ -20,6 +20,7 @@ public class Weapon : MonoBehaviour
     float rocketProjectileSpeed = 50f;
 
     float currSkillCooltime = 0f;
+    public float CurrSkillCooltime => currSkillCooltime;
 
     int attackIndex = 0;
     const int maxAmmo = 30;
