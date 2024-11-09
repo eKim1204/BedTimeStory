@@ -31,6 +31,10 @@ public class GamePlayManager : DestroyableSingleton<GamePlayManager>
         GameEventManager.Instance.onGameStart.Invoke();
     }
 
-
+    
+    public void StartWave()
+    {
+        WaveManager.Instance.StartWave();
+    }
 
 }
