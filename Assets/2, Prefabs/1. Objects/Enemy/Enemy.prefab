@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3654369698663907916}
   - component: {fileID: 8407753709932845091}
   - component: {fileID: 7448329445168510926}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -145,6 +145,7 @@ MonoBehaviour:
   movementSpeed: 0
   stopDurationRemain: 0
   stunDurationRemain: 0
+  lastAttackTime: 0
 --- !u!136 &8407753709932845091
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -191,7 +192,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
