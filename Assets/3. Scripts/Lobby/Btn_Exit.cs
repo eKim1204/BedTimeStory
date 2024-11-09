@@ -3,13 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Btn_Exit : MonoBehaviour
+public class Btn_Exit : Btn_Parent
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Init()
     {
         GetComponent<Button>().onClick.AddListener(GameManager.Instance.QuitGame);
     }
-
-
 }

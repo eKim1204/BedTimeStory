@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Btn_GameStart : MonoBehaviour
+public class Btn_GameStart : Btn_Parent
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Init()
     {
         GetComponent<Button>().onClick.AddListener(SceneLoadManager.Instance.Load_MainScene);
     }
+
+
 }
