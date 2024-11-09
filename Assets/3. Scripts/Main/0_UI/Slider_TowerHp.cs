@@ -21,13 +21,13 @@ public class Slider_TowerHp : MonoBehaviour
     void Init()
     {
         slider_hp = GetComponent<Slider>();
-        slider_hp.maxValue = GamePlayManager.Instance.tower.maxHp;
-        slider_hp.value = GamePlayManager.Instance.tower.hp;
+        slider_hp.maxValue = Tower.Instance.maxHp;
+        slider_hp.value = Tower.Instance.hp;
     }
 
     void OnUpdateTowerHp()
     {
-        slider_hp.value = GamePlayManager.Instance.tower.hp;
+        slider_hp.value = Tower.Instance.hp;
     }
 
 

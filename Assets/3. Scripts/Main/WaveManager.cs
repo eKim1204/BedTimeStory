@@ -29,7 +29,7 @@ public class WaveManager : DestroyableSingleton<WaveManager>
 
     public void StartWave()
     {
-        // Time.timeScale = 16;
+        Time.timeScale = 16;
 
         waveStartTime = Time.time;
         wavePlayTime = 0;
@@ -117,8 +117,10 @@ public class WaveManager : DestroyableSingleton<WaveManager>
         {
             for(int i=0;i< spawnPerCycle;i++)
             {
-                // Instantiate( prefab_enemy ).GetComponent<Enemy>().Init(clearedWaveNum);    // 여기서 스폰 위치 찾아야함. 
+                Vector3 spawnPos = Stage.Instance.GetRandomSpawnPoint();
                 
+                Enemy enemy = Instantiate( prefab_enemy,spawnPos,Quaternion.identity ).GetComponent<Enemy>();  
+                enemy.Init(clearedWaveNum);
             }
 
             currSpawnCount += spawnPerCycle;        //2초마다이면 1초마다 어느정도는 소환하도록 수정할 예정. 

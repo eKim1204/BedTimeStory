@@ -4,21 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GamePlayManager : DestroyableSingleton<GamePlayManager>
-{   Tower _tower;
-    public Tower tower 
-    {
-        get
-        {
-            if( _tower== null)
-            {
-                _tower = FindObjectOfType<Tower>();
-            }
-            return _tower;
-        }
-    }
-
-
-
+{   
     [SerializeField] Button testWaveStartBtn;
 
     //
@@ -32,7 +18,8 @@ public class GamePlayManager : DestroyableSingleton<GamePlayManager>
 
     public void StartGame()
     {
-        tower.Init();
+        Tower.Instance.Init();
+        Stage.Instance.Init();
         
         GameEventManager.Instance.onGameStart.Invoke();
 
