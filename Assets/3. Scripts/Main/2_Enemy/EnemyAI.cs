@@ -18,21 +18,8 @@ public class EnemyAI : MonoBehaviour
     
     NavMeshAgent navAgent;
     
-    float playerDetectionRange = 10;
-    float attackRange = 1.5f;
-
-    void Start()
-    {
-        navAgent = GetComponent<NavMeshAgent>();
-        navAgent.autoBraking = false;
-
-
-        t=transform;
-        t_tower = Tower.Instance.transform;
-        t_player = Player.Instance.transform;
-        
-
-    }
+    public float playerDetectionRange = 10;
+    public float attackRange = 1.5f;
 
     void Update()
     {
@@ -60,6 +47,24 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+
+
+    public void Init(EnemyDataSO enemyData, int waveNum)
+    {
+        navAgent = GetComponent<NavMeshAgent>();
+        navAgent.autoBraking = false;
+
+
+        t=transform;
+        t_tower = Tower.Instance.transform;
+        t_player = Player.Instance.transform;
+
+
+        //
+        navAgent.speed = enemyData.movementSpeed;
+        attackRange = enemyData.attackRange;
+        playerDetectionRange = enemyData.playerDectectionRange;
+    }
 
 
     void OnPlayerInRange()
