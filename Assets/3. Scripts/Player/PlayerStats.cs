@@ -23,7 +23,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
     private float attackPower;
     private float moveSpeed;
-    private float reloadSpeed;
+    private float reloadSpeed = 1;
     private float skillCooltime;
 
     public float AttackPower => attackPower;

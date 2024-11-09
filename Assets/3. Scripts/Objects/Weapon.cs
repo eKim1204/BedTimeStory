@@ -2,84 +2,88 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Manager;
 
 public class Weapon : MonoBehaviour
 {
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] GameObject rocketProjectilePrefab;
     [SerializeField] Transform muzzle;
-    [SerializeField] GameObject reloadParticleSystem;
+    [SerializeField] ParticleSystem reloadParticleSystem;
 
     bool isAiming = false;
+    bool isShotting = false;
+    bool isReloading = false;
+
     float projectileSpeed = 100f;
     float rocketProjectileSpeed = 50f;
 
-    float currSkillCooltime = 0f;
-
     const int maxAmmo = 10;
+    private const float delay = 0.125f;
     int currAmmo = maxAmmo;
 
     // Update is called once per frame
+    private void Start()
+    {
+        reloadParticleSystem.Stop();
+        StartCoroutine(Shotting());
+    }
     void Update()
     {
         Aim();
-        Shoot();
+        IsShot();
         Reload();
     }
+    IEnumerator Shotting()
+    {
+        //왼쪽은 누르면서, 장전을 안하고 있으며, 조준을 하고 있어야함.
+        bool checker = isShotting == true && isReloading == false && isAiming == true;
+        Debug.Log(isShotting + " " + isReloading + " " + isAiming);
+        yield return new WaitUntil(() => isShotting == true && isReloading == false && isAiming == true );
+        if (currAmmo > 0)
+        {
+            Shot();
+            currAmmo--;
+            EventManager.Instance.PostNotification(MEventType.ChangeArmo, this, new TransformEventArgs(transform, currAmmo, maxAmmo));
+            yield return new WaitForSeconds(delay);
+        }
+        else
+            isShotting = false;
 
+        StartCoroutine(Shotting());
+    }
     private void Aim()
     {
         if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
             isAiming = true;
-        }
         if (Input.GetKeyUp(KeyCode.Mouse1))
-        {
             isAiming = false;
-        }
     }
-
-    private void Shoot()
+    private void IsShot() => isShotting = Input.GetKey(KeyCode.Mouse0);
+    private void Shot()
     {
-        if (!isAiming)
-            return;
+        Vector3 projectileDir = CalcDir();
+        GameObject projectile = Instantiate(projectilePrefab,
+            muzzle.position, Quaternion.Euler(projectileDir));
+        projectile.GetComponent<Rigidbody>().AddForce(projectileDir * projectileSpeed, ForceMode.Impulse);
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            if (currAmmo == 0)
-            {
-                Reload();
-                return;
-            }
-            else
-            {
-                currAmmo--;
-            }
+        //스페셜 공격
+        //if (Input.GetKeyDown(KeyCode.Q))
+        //{
+        //    Vector3 projectileDir = CalcDir();
 
-            Vector3 projectileDir = CalcDir();
+        //    GameObject projectile = Instantiate(rocketProjectilePrefab,
+        //        muzzle.position, Quaternion.Euler(projectileDir));
 
-            GameObject projectile = Instantiate(projectilePrefab,
-                muzzle.position, Quaternion.Euler(projectileDir));
-
-            projectile.GetComponent<Rigidbody>().AddForce(projectileDir * projectileSpeed, ForceMode.Impulse);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            Vector3 projectileDir = CalcDir();
-
-            GameObject projectile = Instantiate(rocketProjectilePrefab,
-                muzzle.position, Quaternion.Euler(projectileDir));
-
-            projectile.GetComponent<Rigidbody>().AddForce(projectileDir * rocketProjectileSpeed, ForceMode.Impulse);
-        }
+        //    projectile.GetComponent<Rigidbody>().AddForce(projectileDir * rocketProjectileSpeed, ForceMode.Impulse);
+        //}
     }
 
     private void Reload()
     {
         if(Input.GetKeyDown(KeyCode.R))
         {
-            if(currAmmo < maxAmmo)
+            if(currAmmo < maxAmmo && !isReloading)
             {
                 StartCoroutine(ReloadCoroutine());
             }
@@ -88,28 +92,15 @@ public class Weapon : MonoBehaviour
 
     private IEnumerator ReloadCoroutine()
     {
-        ParticleSystem[] pss = reloadParticleSystem.GetComponentsInChildren<ParticleSystem>();
-
-        float desiredDuration = PlayerStats.Instance.ReloadSpeed;
-
-        foreach (var ps in pss)
-        {
-            Debug.Log("파티클 이펙트 재생");
-            float originalDuration = ps.main.duration;
-
-            var psMain = ps.main;
-
-            Debug.Log("originalDuration : " + originalDuration);
-            Debug.Log("파티클 이펙트 재생");
-
-
-            psMain.simulationSpeed = originalDuration/desiredDuration; 
-            ps.Play();
-        }
-
+        isReloading = true;
+        reloadParticleSystem.Play();
+        EventManager.Instance.PostNotification(MEventType.ReloadingArmo, this, new TransformEventArgs(transform, true));
         yield return new WaitForSeconds(PlayerStats.Instance.ReloadSpeed);
-
+        reloadParticleSystem.Stop();
+        EventManager.Instance.PostNotification(MEventType.ReloadingArmo, this, new TransformEventArgs(transform, false));
+        EventManager.Instance.PostNotification(MEventType.ChangeArmo, this, new TransformEventArgs(transform, currAmmo, maxAmmo));
         currAmmo = maxAmmo;
+        isReloading = false;
     }
 
     private Vector3 CalcDir()
