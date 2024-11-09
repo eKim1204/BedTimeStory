@@ -9,7 +9,9 @@ public class WaveInfo
     
     public float duration;
 
-    public int spawnPerSeconds;     // 초당 적 생성수 
+    public float cycleGap;     // 사이클 간격
+    public int spawnPerCycle;     // 사이클 당 적 생성 수
+    
 }
 
 [CreateAssetMenu(fileName = "WaveData", menuName = "SO/WaveData", order = int.MaxValue)]
