@@ -55,7 +55,7 @@ public class UpgradeSystem : MonoBehaviour
             // ��� �з� ������
             int gradeOffset;
             float randomNumber = UnityEngine.Random.Range(0, 100);
-            if (randomNumber < 3)
+            if (randomNumber < 2.5)
                 gradeOffset = 0;
             else if (randomNumber < 8)
                 gradeOffset = 1;
