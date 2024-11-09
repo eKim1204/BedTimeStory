@@ -65,7 +65,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
         onGoldChanged.Invoke();
 
-        Debug.Log("Currgold : " + currGold);
+        //Debug.Log("Currgold : " + currGold);
     }
 
     public void SetAttackPower(float value)

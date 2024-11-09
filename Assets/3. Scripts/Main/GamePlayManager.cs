@@ -18,6 +18,16 @@ public class GamePlayManager : DestroyableSingleton<GamePlayManager>
     }
 
 
+    void Update()
+    {
+        if( Input.GetKeyDown( KeyCode.Alpha0))
+        {
+            StartWave();
+        }
+
+    }
+
+
     public void StartGame()
     {
         isGamePlaying = true;
