@@ -1755,7 +1755,7 @@ PrefabInstance:
     - target: {fileID: 5026255439132931582, guid: 47a1c4ac1f7ac444e9edd99187cb0765, type: 3}
       propertyPath: enemyDataSO
       value: 
-      objectReference: {fileID: 11400000, guid: 1b68e9c614caf8549b02a33123831af6, type: 2}
+      objectReference: {fileID: 11400000, guid: 337a99ee2da903544916e01ad4b7988c, type: 2}
     - target: {fileID: 8251859393145302670, guid: 47a1c4ac1f7ac444e9edd99187cb0765, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
