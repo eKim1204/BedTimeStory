@@ -11,6 +11,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] Transform muzzle;
     [SerializeField] ParticleSystem reloadParticleSystem;
 
+    [SerializeField] private SoundEventSO[] attackEventSOs;
     bool isAiming = false;
     bool isShotting = false;
     bool isReloading = false;
@@ -18,6 +19,7 @@ public class Weapon : MonoBehaviour
     float projectileSpeed = 100f;
     float rocketProjectileSpeed = 50f;
 
+    int attackIndex = 0;
     const int maxAmmo = 10;
     private const float delay = 0.125f;
     int currAmmo = maxAmmo;
@@ -62,6 +64,9 @@ public class Weapon : MonoBehaviour
     private void IsShot() => isShotting = Input.GetKey(KeyCode.Mouse0);
     private void Shot()
     {
+        attackEventSOs[attackIndex++].Raise();
+        if (attackIndex >= attackEventSOs.Length)
+            attackIndex = 0;
         Vector3 projectileDir = CalcDir();
         GameObject projectile = Instantiate(projectilePrefab,
             muzzle.position, Quaternion.Euler(projectileDir));
