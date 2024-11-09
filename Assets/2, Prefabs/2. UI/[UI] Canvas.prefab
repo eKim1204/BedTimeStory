@@ -659,6 +659,7 @@ GameObject:
   - component: {fileID: 8368302143539068335}
   - component: {fileID: 3319777167857761524}
   - component: {fileID: 2461758083955330624}
+  - component: {fileID: 5641680039301681138}
   m_Layer: 5
   m_Name: SkillInfo
   m_TagString: Untagged
@@ -724,6 +725,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5641680039301681138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1295975536222632048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81bd1bf2a7354e64db39765c63e7cd28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1461785044499270937
 GameObject:
   m_ObjectHideFlags: 0
