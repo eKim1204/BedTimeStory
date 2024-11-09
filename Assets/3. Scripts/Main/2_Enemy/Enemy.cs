@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (isAlive == false || GamePlayManager.isGamePlaying == false || currHp <= 0)
+        if (isAlive == false || GamePlayManager.isGamePlaying == false )
         {
             return;
         }
@@ -173,6 +173,7 @@ public class Enemy : MonoBehaviour
         _collider.enabled = false;
         DropItem();
         enemyState?.OnEnemyDie();
+        enemyAI.OnDie();
         aniamtor.SetBool("isDead", true);
         Destroy(gameObject, 6.0f);
     }
@@ -199,12 +200,11 @@ public class Enemy : MonoBehaviour
     }
 
 
-    public void Attack()
+    public void Attack(Vector3 targetPos)
     {
         isCasting = true;
-        enemyData.Attack(this);
+        enemyData.Attack(this,targetPos);
         lastAttackTime = Time.time;
-        Debug.Log("어택");
 
         StopAttack();
     }

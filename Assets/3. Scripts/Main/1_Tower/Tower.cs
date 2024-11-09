@@ -21,17 +21,22 @@ public class Tower : DestroyableSingleton<Tower>
     {
         hp -= dmg;
 
+        GameEventManager.Instance.onChange_towerHp.Invoke();
+
         if (hp<= 0)
         {
             DestroyTower();
         }
+
+
+
     }
 
 
     public void DestroyTower()
     {
         // Destroy(gameObject);
-
+        GamePlayManager.Instance.GameOver();
         Debug.LogError("패배!!!!!!!!!!");
     }   
 

@@ -26,5 +26,13 @@ namespace GameUtil
             return new Vector3(pos.x,1,pos.z);
         }
     }
+
+    public static class GameConstants
+    {
+        public static int playerLayer =  1<<LayerMask.NameToLayer("Player");
+        public static int enemyLayer =  1<<LayerMask.NameToLayer("Enemy");
+
+        public static int towerLayer =  1<<LayerMask.NameToLayer("Tower");
+    }
 }
 

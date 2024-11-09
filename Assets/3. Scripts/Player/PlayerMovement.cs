@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float gravity = -9.81f;
     Vector3 velocity;
 
-    [Header("°É¾î°¡´Â »ç¿îµå")]
+    [Header("ï¿½É¾î°¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½")]
     [SerializeField] SoundEventSO[] soundEventSOs;
     private Coroutine walkSoundCoroutine;
     private int soundIndex = 0;
@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Ä¿¼­ Áö¿ì±â
+        //Ä¿ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         controller = GetComponent<CharacterController>();
@@ -61,8 +61,16 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetDirectionAndMove();
         Gravity();
+        
+        if(GamePlayManager.isGamePlaying==false)
+        {
+            return;
+        }
+        
+        
+        GetDirectionAndMove();
+        
     }
     private bool IsGrounded()
     {
