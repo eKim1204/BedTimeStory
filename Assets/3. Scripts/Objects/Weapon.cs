@@ -17,6 +17,7 @@ public class Weapon : MonoBehaviour
     {
         Aim();
         Shoot();
+        Reload();
     }
 
     private void Aim()
@@ -31,7 +32,7 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    void Shoot()
+    private void Shoot()
     {
         if (!isAiming)
             return;
@@ -55,6 +56,11 @@ public class Weapon : MonoBehaviour
 
             projectile.GetComponent<Rigidbody>().AddForce(projectileDir * rocketProjectileSpeed, ForceMode.Impulse);
         }
+    }
+
+    private void Reload()
+    {
+
     }
 
     private Vector3 CalcDir()
