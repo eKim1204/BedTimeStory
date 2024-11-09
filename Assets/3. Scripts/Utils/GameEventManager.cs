@@ -1,0 +1,33 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+
+
+public class GameEventManager : Singleton<GameEventManager>
+{
+    public UnityEvent onGameStart = new();   // 메인씬 로드 직후, 필요 데이터가 초기화 된 후
+    public UnityEvent onChange_towerHp = new();   // 타워 hp 업데이트 시 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public override void Init()
+    {
+        
+    }
+}
