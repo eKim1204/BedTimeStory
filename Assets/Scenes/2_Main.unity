@@ -131,7 +131,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 28421003}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstacles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1713,7 +1713,7 @@ GameObject:
   - component: {fileID: 652133228}
   - component: {fileID: 652133227}
   - component: {fileID: 652133226}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3398,6 +3398,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 980024841860452105, guid: 7d98d56bb6676ef46a29a1049d20f8a8, type: 3}
+      propertyPath: attackEventSOs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 980024841860452105, guid: 7d98d56bb6676ef46a29a1049d20f8a8, type: 3}
+      propertyPath: attackEventSOs.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 414c462252fe8904cae8b1deece2bf39, type: 2}
+    - target: {fileID: 980024841860452105, guid: 7d98d56bb6676ef46a29a1049d20f8a8, type: 3}
+      propertyPath: attackEventSOs.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 690948c4d92f7cc43870993904c313a2, type: 2}
+    - target: {fileID: 980024841860452105, guid: 7d98d56bb6676ef46a29a1049d20f8a8, type: 3}
+      propertyPath: attackEventSOs.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 354a661dac722f442bde2b7221a941b7, type: 2}
+    - target: {fileID: 980024841860452105, guid: 7d98d56bb6676ef46a29a1049d20f8a8, type: 3}
+      propertyPath: attackEventSOs.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6f27b4597633b654ca3e37255e9b89b5, type: 2}
     - target: {fileID: 4807865899677616379, guid: 7d98d56bb6676ef46a29a1049d20f8a8, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.2
@@ -3558,7 +3578,7 @@ GameObject:
   - component: {fileID: 1346049249}
   - component: {fileID: 1346049248}
   - component: {fileID: 1346049247}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4685,7 +4705,7 @@ GameObject:
   - component: {fileID: 1853318562}
   - component: {fileID: 1853318561}
   - component: {fileID: 1853318560}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4790,7 +4810,7 @@ GameObject:
   - component: {fileID: 1864955435}
   - component: {fileID: 1864955434}
   - component: {fileID: 1864955433}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5340,6 +5360,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d971d5b29a3dec24bac20a33421f6ca6, type: 2}
   - {fileID: 11400000, guid: 4b992f2d33ce0ff4b9cfd42d5cf26529, type: 2}
   - {fileID: 11400000, guid: 6f7b1da9924ad9847aa752953dfe39fa, type: 2}
+  - {fileID: 11400000, guid: 414c462252fe8904cae8b1deece2bf39, type: 2}
+  - {fileID: 11400000, guid: 690948c4d92f7cc43870993904c313a2, type: 2}
+  - {fileID: 11400000, guid: 354a661dac722f442bde2b7221a941b7, type: 2}
+  - {fileID: 11400000, guid: 6f27b4597633b654ca3e37255e9b89b5, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
