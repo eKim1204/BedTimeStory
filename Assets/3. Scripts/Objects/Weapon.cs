@@ -22,7 +22,7 @@ public class Weapon : MonoBehaviour
     float currSkillCooltime = 0f;
 
     int attackIndex = 0;
-    const int maxAmmo = 987654321;
+    const int maxAmmo = 30;
     private const float delay = 0.125f;
     int currAmmo = maxAmmo;
 
