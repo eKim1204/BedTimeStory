@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour
     public bool stunned => stunDurationRemain > 0;
 
 
-
+    Slider_EnemyHp enemyState;
     //===================================
 
     void Update()
@@ -90,6 +90,10 @@ public class Enemy : MonoBehaviour
         
 
         enemyAI.Init( this, waveNum);
+
+
+        enemyState = EnemyCanvas.Instance.Generate_EnemyHpBar();
+        enemyState?.Init(this);
     }
 
     void InitStatus(int waveNum)
@@ -122,7 +126,7 @@ public class Enemy : MonoBehaviour
         }
 
         // ui
-        // stateUI.UpdateCurrHp(hp);
+        enemyState?.OnUpdateEnemyHp();
     }
 
 
@@ -166,6 +170,9 @@ public class Enemy : MonoBehaviour
         
         DropItem();
         //
+
+
+        enemyState?.OnEnemyDie();
     }
 
     void DropItem()

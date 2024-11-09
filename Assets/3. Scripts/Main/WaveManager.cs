@@ -29,7 +29,7 @@ public class WaveManager : DestroyableSingleton<WaveManager>
 
     public void StartWave()
     {
-        Time.timeScale = 16;
+        // Time.timeScale = 16;
 
         waveStartTime = Time.time;
         wavePlayTime = 0;
