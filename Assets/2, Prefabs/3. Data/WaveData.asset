@@ -16,40 +16,40 @@ MonoBehaviour:
   - num: 1
     duration: 60
     cycleGap: 10
-    spawnPerCycle: 1
+    spawnPerCycle: 2
   - num: 2
     duration: 60
     cycleGap: 10
-    spawnPerCycle: 2
+    spawnPerCycle: 4
   - num: 3
     duration: 60
     cycleGap: 8
-    spawnPerCycle: 3
+    spawnPerCycle: 6
   - num: 4
     duration: 60
     cycleGap: 7
-    spawnPerCycle: 3
+    spawnPerCycle: 6
   - num: 5
     duration: 60
     cycleGap: 6
-    spawnPerCycle: 3
+    spawnPerCycle: 6
   - num: 6
     duration: 60
     cycleGap: 6
-    spawnPerCycle: 4
+    spawnPerCycle: 8
   - num: 7
     duration: 60
     cycleGap: 6
-    spawnPerCycle: 5
+    spawnPerCycle: 10
   - num: 8
     duration: 60
     cycleGap: 5
-    spawnPerCycle: 5
+    spawnPerCycle: 10
   - num: 9
     duration: 60
     cycleGap: 3
-    spawnPerCycle: 4
+    spawnPerCycle: 8
   - num: 10
     duration: 60
     cycleGap: 2
-    spawnPerCycle: 3
+    spawnPerCycle: 6
