@@ -19,6 +19,8 @@ public class Weapon : MonoBehaviour
     float projectileSpeed = 100f;
     float rocketProjectileSpeed = 50f;
 
+    float currSkillCooltime = 0f;
+
     int attackIndex = 0;
     const int maxAmmo = 987654321;
     private const float delay = 0.125f;
@@ -32,21 +34,23 @@ public class Weapon : MonoBehaviour
     }
     void Update()
     {
+        float deltaTime = Time.deltaTime;
+        currSkillCooltime = Mathf.Max(currSkillCooltime - deltaTime, 0);
+
         Aim();
         IsShot();
         Reload();
 
-
-                //����� ����
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && currSkillCooltime == 0)
         {
-           
            Vector3 roketPrjDir = CalcDir();
 
            GameObject rocketProj = Instantiate(rocketProjectilePrefab,
                muzzle.position, Quaternion.Euler(roketPrjDir));
 
            rocketProj.GetComponent<Rigidbody>().AddForce(roketPrjDir * rocketProjectileSpeed, ForceMode.Impulse);
+
+            currSkillCooltime = PlayerStats.Instance.SkillCooltime;
         }
     }
     IEnumerator Shotting()
