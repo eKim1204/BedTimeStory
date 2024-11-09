@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class Btn_GameStart : Btn_Parent
 {
+    [SerializeField] GameObject difficultySelectPanel;
+
     public override void Init()
     {
-        GetComponent<Button>().onClick.AddListener(SceneLoadManager.Instance.Load_MainScene);
+        GetComponent<Button>().onClick.AddListener(() => difficultySelectPanel.SetActive(true));
     }
-
-
 }
