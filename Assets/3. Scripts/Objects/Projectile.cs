@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    [SerializeField] SoundEventSO soundSO;
     public GameObject hitPrefab;
     public List<GameObject> trails;
     private void Start()
@@ -33,6 +34,7 @@ public class Projectile : MonoBehaviour
         // Damage Enemy
         //DamageEnemy(other);
         EventManager.Instance.PostNotification(MEventType.EnemyHitted, this, new TransformEventArgs(transform, true));
+        soundSO.Raise();
         Explode();
         //StartCoroutine(DestroyParticle(0f));
     }

@@ -5226,6 +5226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 459469fadf7b0984c9112ce0fa88f2ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundSO: {fileID: 11400000, guid: 8e74f6501f7ec5d4799860ca4090111a, type: 2}
   hitPrefab: {fileID: 1958568899816826, guid: 922574f7f2e5e4b46a6b64296d4eac41, type: 3}
   trails:
   - {fileID: 1697879271537238}

@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GamePlayManager : DestroyableSingleton<GamePlayManager>
-{   
+{
+    [SerializeField] SoundEventSO bgm;
     [SerializeField] Button testWaveStartBtn;
 
     public static bool isGamePlaying;
@@ -13,7 +14,7 @@ public class GamePlayManager : DestroyableSingleton<GamePlayManager>
     void Start()
     {
         testWaveStartBtn.onClick.AddListener(  StartWave );
-        
+        bgm.Raise();
         StartGame();
     }
 
