@@ -1,16 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Weapon : MonoBehaviour
 {
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] GameObject rocketProjectilePrefab;
     [SerializeField] Transform muzzle;
+    [SerializeField] GameObject reloadParticleSystem;
 
     bool isAiming = false;
-    float projectileSpeed = 100;
-    float rocketProjectileSpeed = 50;
+    float projectileSpeed = 100f;
+    float rocketProjectileSpeed = 50f;
+
+    float currSkillCooltime = 0f;
+
+    const int maxAmmo = 10;
+    int currAmmo = maxAmmo;
 
     // Update is called once per frame
     void Update()
@@ -39,6 +46,16 @@ public class Weapon : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            if (currAmmo == 0)
+            {
+                Reload();
+                return;
+            }
+            else
+            {
+                currAmmo--;
+            }
+
             Vector3 projectileDir = CalcDir();
 
             GameObject projectile = Instantiate(projectilePrefab,
@@ -60,7 +77,39 @@ public class Weapon : MonoBehaviour
 
     private void Reload()
     {
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            if(currAmmo < maxAmmo)
+            {
+                StartCoroutine(ReloadCoroutine());
+            }
+        }
+    }
 
+    private IEnumerator ReloadCoroutine()
+    {
+        ParticleSystem[] pss = reloadParticleSystem.GetComponentsInChildren<ParticleSystem>();
+
+        float desiredDuration = PlayerStats.Instance.ReloadSpeed;
+
+        foreach (var ps in pss)
+        {
+            Debug.Log("파티클 이펙트 재생");
+            float originalDuration = ps.main.duration;
+
+            var psMain = ps.main;
+
+            Debug.Log("originalDuration : " + originalDuration);
+            Debug.Log("파티클 이펙트 재생");
+
+
+            psMain.simulationSpeed = originalDuration/desiredDuration; 
+            ps.Play();
+        }
+
+        yield return new WaitForSeconds(PlayerStats.Instance.ReloadSpeed);
+
+        currAmmo = maxAmmo;
     }
 
     private Vector3 CalcDir()
