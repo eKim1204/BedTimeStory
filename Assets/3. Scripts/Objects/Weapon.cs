@@ -18,7 +18,7 @@ public class Weapon : MonoBehaviour
     float projectileSpeed = 100f;
     float rocketProjectileSpeed = 50f;
 
-    const int maxAmmo = 10;
+    const int maxAmmo = 987654321;
     private const float delay = 0.125f;
     int currAmmo = maxAmmo;
 
@@ -36,7 +36,7 @@ public class Weapon : MonoBehaviour
     }
     IEnumerator Shotting()
     {
-        //¿ÞÂÊÀº ´©¸£¸é¼­, ÀåÀüÀ» ¾ÈÇÏ°í ÀÖÀ¸¸ç, Á¶ÁØÀ» ÇÏ°í ÀÖ¾î¾ßÇÔ.
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½é¼­, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï°ï¿½ ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½.
         bool checker = isShotting == true && isReloading == false && isAiming == true;
         Debug.Log(isShotting + " " + isReloading + " " + isAiming);
         yield return new WaitUntil(() => isShotting == true && isReloading == false && isAiming == true );
@@ -65,9 +65,9 @@ public class Weapon : MonoBehaviour
         Vector3 projectileDir = CalcDir();
         GameObject projectile = Instantiate(projectilePrefab,
             muzzle.position, Quaternion.Euler(projectileDir));
-        projectile.GetComponent<Rigidbody>().AddForce(projectileDir * projectileSpeed, ForceMode.Impulse);
+        projectile.GetComponent<Rigidbody>().velocity =   (projectileDir * projectileSpeed);
 
-        //½ºÆä¼È °ø°Ý
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         //if (Input.GetKeyDown(KeyCode.Q))
         //{
         //    Vector3 projectileDir = CalcDir();
