@@ -27,6 +27,9 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //커서 지우기
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         controller = GetComponent<CharacterController>();
         walkSoundCoroutine = StartCoroutine(PlayerWalkSound());
     }
