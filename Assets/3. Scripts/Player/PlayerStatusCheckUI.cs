@@ -39,7 +39,12 @@ public class PlayerStatusCheckUI : MonoBehaviour
         var seq = DOTween.Sequence();
         seq
             .SetAutoKill(true)
-            .OnStart(() => crosshair2.gameObject.SetActive(true))
+            .OnStart(() =>
+            {
+                crosshair2.gameObject.SetActive(true);
+                crosshair.transform.localScale = new Vector3(1, 1, 1);
+                crosshair2.transform.localScale = new Vector3(1, 1, 1);
+            })
             .Join(crosshair.transform.DOPunchScale(new Vector3(0.25f, 0.25f, 0f), 0.125f))
             .Join(crosshair.DOColor(new Color(1,0,0), 0.125f))
             .Join(crosshair2.transform.DOPunchScale(new Vector3(1f, 1f, 0f), 0.125f))
