@@ -22,7 +22,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                 if (_instance == null)
                 {
                     _instance = (T)FindAnyObjectByType(typeof(T));
-
+                    
                     if (_instance == null)
                     {
                         var singletonObj = new GameObject();
@@ -30,6 +30,10 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                         singletonObj.name = typeof(T).ToString() + "(Singleton)";
 
                         DontDestroyOnLoad(singletonObj);
+                    }
+                    else
+                    {
+                        DontDestroyOnLoad(_instance.gameObject);
                     }
                 }
             }
