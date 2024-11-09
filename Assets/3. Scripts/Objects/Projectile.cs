@@ -32,7 +32,7 @@ public class Projectile : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // Damage Enemy
-        //DamageEnemy(other);
+        DamageEnemy(other);
         EventManager.Instance.PostNotification(MEventType.EnemyHitted, this, new TransformEventArgs(transform, true));
         soundSO.Raise();
         Explode();
@@ -44,6 +44,7 @@ public class Projectile : MonoBehaviour
         Enemy enemy = null;
         if (enemy = co.gameObject.GetComponent<Enemy>())
         {
+            Debug.Log(PlayerStats.Instance.AttackPower);
             enemy.GetDamaged(PlayerStats.Instance.AttackPower);
         }
     }

@@ -7,13 +7,13 @@ public class PlayerStats : Singleton<PlayerStats>
 {
     public enum Status
     {
-        Idle,       //Á¤Áö»óÅÂ
-        Walk,       //°È´Â»óÅÂ
-        Run,        //´Þ¸®±â »óÅÂ (°È´Â»óÅÂ -> ´Þ¸®±â »óÅÂ ÆÄ»ý)
-        Aim,        //¿¡ÀÓ»óÅÂ (¿¡ÀÓ»óÅÂ->°ø°Ý »óÅÂ ÆÄ»ý)
-        Attack,     //°ø°Ý»óÅÂ
-        Hitted,     //ÇÇ°Ý»óÅÂ
-        Dead,       //»ç¸Á -> °ÔÀÓ³¡
+        Idle,       //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        Walk,       //ï¿½È´Â»ï¿½ï¿½ï¿½
+        Run,        //ï¿½Þ¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½È´Â»ï¿½ï¿½ï¿½ -> ï¿½Þ¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ä»ï¿½)
+        Aim,        //ï¿½ï¿½ï¿½Ó»ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½Ó»ï¿½ï¿½ï¿½->ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ä»ï¿½)
+        Attack,     //ï¿½ï¿½ï¿½Ý»ï¿½ï¿½ï¿½
+        Hitted,     //ï¿½Ç°Ý»ï¿½ï¿½ï¿½
+        Dead,       //ï¿½ï¿½ï¿½ -> ï¿½ï¿½ï¿½Ó³ï¿½
     }
     public Status playerStatus { get; set; }
     private float maxHP = 100;
@@ -21,17 +21,17 @@ public class PlayerStats : Singleton<PlayerStats>
     private int currGold = 100000;
     public int CurrGold => currGold;
 
-    private float attackPower;
-    private float moveSpeed;
+    private float attackPower = 20;
+    private float moveSpeed = 5;
     private float reloadSpeed = 1;
-    private float skillCooltime;
+    private float skillCooltime = 10;
 
     public float AttackPower => attackPower;
     public float MoveSpeed => moveSpeed;
     public float ReloadSpeed => reloadSpeed;
     public float SkillCooltime => skillCooltime;
 
-    public UnityEvent onGoldChanged;
+    public UnityEvent onGoldChanged = new();
 
     private void Awake()
     {

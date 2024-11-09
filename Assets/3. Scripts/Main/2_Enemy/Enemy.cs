@@ -117,14 +117,14 @@ public class Enemy : MonoBehaviour
     {
         // float nockbackPower = 5;
         // GetKnockback(nockbackPower, lastHitPoint);
-
+        
         //
         currHp -= damage;
         if (currHp <= 0)
         {
             Die();
         }
-
+        // Debug.Log($"앗 {currHp}/ {maxHp}");
         // ui
         enemyState?.OnUpdateEnemyHp();
     }
@@ -173,19 +173,23 @@ public class Enemy : MonoBehaviour
 
 
         enemyState?.OnEnemyDie();
+        
+        Destroy(gameObject);
     }
 
     void DropItem()
     {        
         string str = "돈1원 ";
+
+        PlayerStats.Instance.GetGold(1);
         int rand = UnityEngine.Random.Range(0, 100);
-        // if ( 95<= rand)
-        if ( 66<= rand)
+        if ( 95<= rand)
+        // if ( 66<= rand)
         {
             str+="골드주머니 ";
             DropItemManager.Instance.GetItem_Pouch(t.position);
         }
-        else if ( 33 <=rand )
+        else if ( 90 <=rand )
         {
             str+="소형 포션 ";
             DropItemManager.Instance.GetItem_Potion(t.position);

@@ -5356,14 +5356,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soSoundDatas:
-  - {fileID: 11400000, guid: 49640b57c92db0249b1625cf603f39ea, type: 2}
-  - {fileID: 11400000, guid: d971d5b29a3dec24bac20a33421f6ca6, type: 2}
-  - {fileID: 11400000, guid: 4b992f2d33ce0ff4b9cfd42d5cf26529, type: 2}
-  - {fileID: 11400000, guid: 6f7b1da9924ad9847aa752953dfe39fa, type: 2}
   - {fileID: 11400000, guid: 414c462252fe8904cae8b1deece2bf39, type: 2}
   - {fileID: 11400000, guid: 690948c4d92f7cc43870993904c313a2, type: 2}
   - {fileID: 11400000, guid: 354a661dac722f442bde2b7221a941b7, type: 2}
   - {fileID: 11400000, guid: 6f27b4597633b654ca3e37255e9b89b5, type: 2}
+  - {fileID: 11400000, guid: 3b315de47a359624c88b06bcacd9e35b, type: 2}
+  - {fileID: 11400000, guid: 10d715a026b89d64a9b04a575ec60346, type: 2}
+  - {fileID: 11400000, guid: a53717d54fe9bfc4c8a26c9960abfb59, type: 2}
+  - {fileID: 11400000, guid: 3f4720d17794657479b8bc1352235a1d, type: 2}
+  - {fileID: 11400000, guid: e606f3db8203d6f49ae0098052255acf, type: 2}
+  - {fileID: 11400000, guid: 8e74f6501f7ec5d4799860ca4090111a, type: 2}
+  - {fileID: 11400000, guid: dfc8f5f361041924abb54d213185baae, type: 2}
+  - {fileID: 11400000, guid: 2a4bb71f0788ced4c823c090ece99393, type: 2}
+  - {fileID: 11400000, guid: 1da786c0fc7f70b46b26321d5497a71f, type: 2}
+  - {fileID: 11400000, guid: fa93ca18f7450544b91e940bfb423f40, type: 2}
+  - {fileID: 11400000, guid: d971d5b29a3dec24bac20a33421f6ca6, type: 2}
+  - {fileID: 11400000, guid: 4b992f2d33ce0ff4b9cfd42d5cf26529, type: 2}
+  - {fileID: 11400000, guid: 6f7b1da9924ad9847aa752953dfe39fa, type: 2}
+  - {fileID: 11400000, guid: 49640b57c92db0249b1625cf603f39ea, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
@@ -5442,6 +5452,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1551806264656179801, guid: 887769c39653b0d47a0dc60d06a2317d, type: 3}
+      propertyPath: bgm
+      value: 
+      objectReference: {fileID: 11400000, guid: 3b315de47a359624c88b06bcacd9e35b, type: 2}
     - target: {fileID: 1551806264656179801, guid: 887769c39653b0d47a0dc60d06a2317d, type: 3}
       propertyPath: testWaveStartBtn
       value: 
