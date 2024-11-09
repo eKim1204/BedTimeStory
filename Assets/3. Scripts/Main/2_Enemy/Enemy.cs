@@ -176,23 +176,19 @@ public class Enemy : MonoBehaviour
     {        
         string str = "돈1원 ";
         int rand = UnityEngine.Random.Range(0, 100);
-        if ( 95<= rand)
+        // if ( 95<= rand)
+        if ( 66<= rand)
         {
             str+="골드주머니 ";
+            DropItemManager.Instance.GetItem_Pouch(t.position);
         }
-        else if ( 90 <=rand )
+        else if ( 33 <=rand )
         {
             str+="소형 포션 ";
+            DropItemManager.Instance.GetItem_Potion(t.position);
+
         }
-        else if ( 87<= rand )
-        {
-            str+="대형 골드주머니";
-        }
-        else if ( 82<= rand )
-        {
-            str+="대형 포션 ";
-        }
-        Debug.Log($"아이템 드랍 : {str}");
+        Debug.Log($"아이템 드랍  r {rand} : {str}");
     }
 
 
