@@ -11,6 +11,17 @@ public class UIManager : DestroyableSingleton<UIManager>
         if(Input.GetKeyDown(KeyCode.B))
         {
             UpgradePanel.SetActive(!UpgradePanel.activeSelf);
+            
+            if(UpgradePanel.activeSelf)
+            {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
+            else
+            {
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
         }
     }
 }
