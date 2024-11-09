@@ -49,17 +49,17 @@ public class Projectile : MonoBehaviour
         }
     }
 
-
-    private void OnCollisionEnter(Collision co)
+    private void OnTriggerEnter(Collider other)
     {
         // Damage Enemy
-        DamageEnemy(co);
-
+        DamageEnemy(other);
+        Debug.Log("!");
         Explode();
         StartCoroutine(DestroyParticle(0f));
+        
     }
 
-    protected virtual void DamageEnemy(Collision co)
+    protected virtual void DamageEnemy(Collider co)
     {
         Enemy enemy = null;
         if (enemy = co.gameObject.GetComponent<Enemy>())

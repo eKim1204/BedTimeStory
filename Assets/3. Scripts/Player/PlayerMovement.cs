@@ -83,7 +83,6 @@ public class PlayerMovement : MonoBehaviour
     }
     IEnumerator PlayerWalkSound()
     {
-        Debug.Log("Waiting Walking");
         yield return new WaitUntil(() => isWalking);
 
         soundEventSOs[soundIndex++].Raise();
@@ -92,12 +91,10 @@ public class PlayerMovement : MonoBehaviour
 
         if (PlayerStats.Instance.playerStatus == PlayerStats.Status.Run)
         {
-            Debug.Log(" Start Walking 0.5f");
             yield return new WaitForSeconds(0.5f);
         }
         else if (PlayerStats.Instance.playerStatus == PlayerStats.Status.Walk)
         {
-            Debug.Log(" Start Walking 0.25f");
             yield return new WaitForSeconds(0.25f);
         }
         else

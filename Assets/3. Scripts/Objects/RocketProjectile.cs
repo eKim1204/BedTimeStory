@@ -16,7 +16,7 @@ public class RocketProjectile : Projectile
         Explode();
     }
 
-    private void OnCollisionEnter(Collision co)
+    private void OnTriggerEnter(Collider co)
     {
         // Damage Enemy
         DamageEnemy(co);
@@ -25,7 +25,7 @@ public class RocketProjectile : Projectile
         StartCoroutine(DestroyParticle(0f));
     }
 
-    protected override void DamageEnemy(Collision co)
+    protected override void DamageEnemy(Collider co)
     {
         var colliders = Physics.OverlapSphere(transform.position, 2f);
 
