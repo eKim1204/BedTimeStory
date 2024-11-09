@@ -46,9 +46,6 @@ public class Enemy : MonoBehaviour
             return;
         }
 
-        
-
-
         // 정지 지속시간 감소
         if (stopDurationRemain > 0)
         {
@@ -68,7 +65,7 @@ public class Enemy : MonoBehaviour
         }
 
         // 스턴걸리면 아래까지 안내려가게.
-        enemyAI.OnUpdate();
+        //enemyAI.OnUpdate();
     }    
 
 
@@ -89,7 +86,7 @@ public class Enemy : MonoBehaviour
         InitStatus(waveNum);
         
 
-        enemyAI.Init( this, waveNum);
+        //enemyAI.Init( this, waveNum);
 
 
         enemyState = EnemyCanvas.Instance.Generate_EnemyHpBar();

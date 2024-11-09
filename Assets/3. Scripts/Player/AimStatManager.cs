@@ -21,6 +21,9 @@ public class AimStatManager : MonoBehaviour
 
     [SerializeField] float mouseSense;
 
+    [Header("에임 이미지 UI")]
+    [SerializeField] RectTransform crosshairImg;
+
     private void Start()
     {
         //setting default position
@@ -45,10 +48,15 @@ public class AimStatManager : MonoBehaviour
     {
         // 에임 모드 활성화
         if (Input.GetKey(KeyCode.Mouse1))
+        {
             camFollowPos.DOLocalMove(camFollowPosAimTarget.localPosition, 0.25f, false);
+            crosshairImg.gameObject.SetActive(true);
+            return;
+        }
         else if(Input.GetKey(KeyCode.LeftShift))
             camFollowPos.DOLocalMove(camFollowPosRunTarget.localPosition, 0.25f, false);
         else
             camFollowPos.DOLocalMove(camFollowPosTarget.localPosition, 0.25f, false).SetEase(Ease.OutCubic);
+        crosshairImg.gameObject.SetActive(false);
     }
 }
