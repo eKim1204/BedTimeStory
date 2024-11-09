@@ -7,6 +7,9 @@ public enum MEventType
     //Weapon
     ChangeArmo,
     ReloadingArmo,
+
+    //Projectile
+    EnemyHitted,
 }
 [Serializable]
 public class TransformEventArgs : EventArgs
