@@ -1,4 +1,5 @@
 using DG.Tweening.Core.Easing;
+using Manager;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,7 +32,7 @@ public class Projectile : MonoBehaviour
     {
         // Damage Enemy
         //DamageEnemy(other);
-        Debug.Log("!");
+        EventManager.Instance.PostNotification(MEventType.EnemyHitted, this, new TransformEventArgs(transform, true));
         Explode();
         //StartCoroutine(DestroyParticle(0f));
     }
