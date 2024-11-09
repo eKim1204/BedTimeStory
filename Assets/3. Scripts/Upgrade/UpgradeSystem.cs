@@ -3,15 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using UnityEngine.Events;
 
 public class UpgradeSystem : MonoBehaviour
 {
     [SerializeField] Button closeButton;
     [SerializeField] Button rerollButton;
-    [SerializeField] Button recoverHPButton;
+    [SerializeField] Button hpRecoverButton;
     [SerializeField] Transform upgradeMenu;
+
     List<UpgradeMenuItem> upgradeMenuItems = new List<UpgradeMenuItem>();
     List<Dictionary<string, object>> dataset;
+
+    [HideInInspector] public UnityEvent onItemLocked;
+
+    float hpRecoverRate = 100;
+    int hpRecoverCost = 40;
+    int rerollCost = 0; // 처음 roll은 0, reroll 시에는 코스트가 듬
 
     private void Awake()
     {
@@ -22,6 +31,12 @@ public class UpgradeSystem : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        PlayerStats.Instance.onGoldChanged.AddListener(SetButtonsInteractable);
+        onItemLocked.AddListener(ChangeRerollCost);
+    }
+
     private void OnEnable()
     {
         Roll();
@@ -29,29 +44,122 @@ public class UpgradeSystem : MonoBehaviour
 
     private void Roll()
     {
-        foreach (var upgradeMenuItem in upgradeMenuItems)
+        PlayerStats.Instance.UseGold(rerollCost);
+
+        for (int i = 0; i < upgradeMenuItems.Count; i++)
         {
+            var upgradeMenuItem = upgradeMenuItems[i];
             if (upgradeMenuItem.IsLocked)
                 continue;
 
-            int randomNumber = UnityEngine.Random.Range(0, dataset.Count);
-            var row = dataset[randomNumber];
+            // 타입 분류 오프셋
+            int typeOffset = i * 6; // A~F까지 6개의 등급
 
-            int type = Convert.ToInt32(row["Type"]);
+            // 등급 분류 오프셋
+            int gradeOffset;
+            float randomNumber = UnityEngine.Random.Range(0, 100);
+            if (randomNumber < 5)
+                gradeOffset = 0;
+            else if (randomNumber < 15)
+                gradeOffset = 1;
+            else if (randomNumber < 30)
+                gradeOffset = 2;
+            else if (randomNumber < 60)
+                gradeOffset = 3;
+            else if (randomNumber < 80)
+                gradeOffset = 4;
+            else // (randomNumber < 100)
+                gradeOffset = 5;
+
+            var row = dataset[typeOffset + gradeOffset];
+
             int grade = Convert.ToInt32(row["Grade"]);
             int value = Convert.ToInt32(row["Value"]);
 
-            upgradeMenuItem.Construct(type, grade, value);
+            upgradeMenuItem.Construct(i, grade, value);
         }
+
+        ChangeRerollCost();
+    }
+
+    private void SetRecoverButtonText()
+    {
+        hpRecoverButton.GetComponentInChildren<TextMeshProUGUI>().
+            SetText($"HP {hpRecoverRate} 회복 : {hpRecoverCost}");
     }
 
     public void OnRecoverButtonPressed()
     {
-        PlayerStats.Instance.Recover(30);
+        PlayerStats.Instance.UseGold(hpRecoverCost);
+        PlayerStats.Instance.Recover(hpRecoverRate);
+
+        hpRecoverCost *= 2;
+
+        SetRecoverButtonText();
     }
 
     public void OnRerollButtonPressed()
     {
         Roll();
+    }
+
+    private void SetButtonsInteractable()
+    {
+        if(PlayerStats.Instance.CurrGold >= hpRecoverCost)
+        {
+            hpRecoverButton.interactable = true;
+        }
+        else
+        {
+            hpRecoverButton.interactable = false;
+        }
+
+        if (PlayerStats.Instance.CurrGold >= rerollCost)
+        {
+            rerollButton.interactable = true;
+        }
+        else
+        {
+            rerollButton.interactable = false;
+        }
+    }
+
+    private void ChangeRerollCost()
+    {
+        int count = 0;
+        foreach(var item in upgradeMenuItems)
+        {
+            if (item.IsLocked)
+                count++;
+        }
+
+        if (count == 4) // 다 잠그면 reroll을 못하게
+        {
+            rerollButton.interactable = false;
+            return;
+        }
+        else
+        {
+            rerollButton.interactable = true;
+        }
+
+        if (count == 0)
+        {
+            rerollCost = 100;
+        }
+        else if (count == 1)
+        {
+            rerollCost = 150;
+        }
+        else if (count == 2)
+        {
+            rerollCost = 300;
+        }
+        else if (count == 3)
+        {
+            rerollCost = 600;
+        }
+
+        rerollButton.GetComponentInChildren<TextMeshProUGUI>().SetText($"Reroll : {rerollCost}");
     }
 }
