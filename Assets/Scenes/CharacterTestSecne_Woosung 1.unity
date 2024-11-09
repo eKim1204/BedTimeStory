@@ -1214,6 +1214,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d971d5b29a3dec24bac20a33421f6ca6, type: 2}
   - {fileID: 11400000, guid: 4b992f2d33ce0ff4b9cfd42d5cf26529, type: 2}
   - {fileID: 11400000, guid: 6f7b1da9924ad9847aa752953dfe39fa, type: 2}
+  - {fileID: 11400000, guid: 6f27b4597633b654ca3e37255e9b89b5, type: 2}
+  - {fileID: 11400000, guid: 414c462252fe8904cae8b1deece2bf39, type: 2}
+  - {fileID: 11400000, guid: 690948c4d92f7cc43870993904c313a2, type: 2}
+  - {fileID: 11400000, guid: 354a661dac722f442bde2b7221a941b7, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
@@ -1810,7 +1814,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1396398319
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1843,14 +1847,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.74509805}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dcd5aae0341bd0642858735fe7fdc429, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7789b657ea330f94d9b70d6d4a117aed, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3491,6 +3495,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 980024841860452105, guid: 7d98d56bb6676ef46a29a1049d20f8a8, type: 3}
+      propertyPath: attackEventSOs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 980024841860452105, guid: 7d98d56bb6676ef46a29a1049d20f8a8, type: 3}
+      propertyPath: attackEventSOs.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6f27b4597633b654ca3e37255e9b89b5, type: 2}
+    - target: {fileID: 980024841860452105, guid: 7d98d56bb6676ef46a29a1049d20f8a8, type: 3}
+      propertyPath: attackEventSOs.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 414c462252fe8904cae8b1deece2bf39, type: 2}
+    - target: {fileID: 980024841860452105, guid: 7d98d56bb6676ef46a29a1049d20f8a8, type: 3}
+      propertyPath: attackEventSOs.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 690948c4d92f7cc43870993904c313a2, type: 2}
+    - target: {fileID: 980024841860452105, guid: 7d98d56bb6676ef46a29a1049d20f8a8, type: 3}
+      propertyPath: attackEventSOs.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 354a661dac722f442bde2b7221a941b7, type: 2}
     - target: {fileID: 4807865899677616379, guid: 7d98d56bb6676ef46a29a1049d20f8a8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.47

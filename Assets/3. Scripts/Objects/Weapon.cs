@@ -11,6 +11,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] Transform muzzle;
     [SerializeField] ParticleSystem reloadParticleSystem;
 
+    [SerializeField] private SoundEventSO[] attackEventSOs;
     bool isAiming = false;
     bool isShotting = false;
     bool isReloading = false;
@@ -18,7 +19,8 @@ public class Weapon : MonoBehaviour
     float projectileSpeed = 100f;
     float rocketProjectileSpeed = 50f;
 
-    const int maxAmmo = 987654321;
+    int attackIndex = 0;
+    const int maxAmmo = 10;
     private const float delay = 0.125f;
     int currAmmo = maxAmmo;
 
@@ -36,7 +38,7 @@ public class Weapon : MonoBehaviour
     }
     IEnumerator Shotting()
     {
-        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½é¼­, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï°ï¿½ ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½.
+        //¿ÞÂÊÀº ´©¸£¸é¼­, ÀåÀüÀ» ¾ÈÇÏ°í ÀÖÀ¸¸ç, Á¶ÁØÀ» ÇÏ°í ÀÖ¾î¾ßÇÔ.
         bool checker = isShotting == true && isReloading == false && isAiming == true;
         Debug.Log(isShotting + " " + isReloading + " " + isAiming);
         yield return new WaitUntil(() => isShotting == true && isReloading == false && isAiming == true );
@@ -62,12 +64,15 @@ public class Weapon : MonoBehaviour
     private void IsShot() => isShotting = Input.GetKey(KeyCode.Mouse0);
     private void Shot()
     {
+        attackEventSOs[attackIndex++].Raise();
+        if (attackIndex >= attackEventSOs.Length)
+            attackIndex = 0;
         Vector3 projectileDir = CalcDir();
         GameObject projectile = Instantiate(projectilePrefab,
             muzzle.position, Quaternion.Euler(projectileDir));
-        projectile.GetComponent<Rigidbody>().velocity =   (projectileDir * projectileSpeed);
+        projectile.GetComponent<Rigidbody>().AddForce(projectileDir * projectileSpeed, ForceMode.Impulse);
 
-        //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        //½ºÆä¼È °ø°Ý
         //if (Input.GetKeyDown(KeyCode.Q))
         //{
         //    Vector3 projectileDir = CalcDir();
