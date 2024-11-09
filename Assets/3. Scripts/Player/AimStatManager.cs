@@ -1,25 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class AimStatManager : MonoBehaviour
 {
     public Cinemachine.AxisState xAxis, yAxis;
     [SerializeField] Transform camFollowPos;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] float mouseSense;
 
     // Update is called once per frame
     void Update()
     {
-        xAxis.Update(Time.deltaTime);    
-        yAxis.Update(Time.deltaTime);    
-
-
+        xAxis.Value += Input.GetAxisRaw("Mouse X") * mouseSense;
+        yAxis.Value -= Input.GetAxisRaw("Mouse Y") * mouseSense;
+        yAxis.Value = Mathf.Clamp(yAxis.Value, -80, 80);
     }
     private void LateUpdate()
     {

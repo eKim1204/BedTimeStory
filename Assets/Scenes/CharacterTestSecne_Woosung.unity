@@ -189,6 +189,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a379da69c7748564eb4e2b2fbcb8fb4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerDetectionRange: 10
+  attackRange: 1.5
 --- !u!195 &87798076
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -413,6 +415,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a379da69c7748564eb4e2b2fbcb8fb4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerDetectionRange: 10
+  attackRange: 1.5
 --- !u!195 &164447251
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -532,6 +536,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a379da69c7748564eb4e2b2fbcb8fb4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerDetectionRange: 10
+  attackRange: 1.5
 --- !u!195 &202907454
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -845,7 +851,6 @@ GameObject:
   - component: {fileID: 327706250}
   - component: {fileID: 327706251}
   - component: {fileID: 327706253}
-  - component: {fileID: 327706252}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -880,19 +885,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &327706252
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 327706249}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4c41ac9245b87c4192012080077d830, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Damping: 0
 --- !u!114 &327706253
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -985,6 +977,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a379da69c7748564eb4e2b2fbcb8fb4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerDetectionRange: 10
+  attackRange: 1.5
 --- !u!195 &403064714
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1411,6 +1405,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a379da69c7748564eb4e2b2fbcb8fb4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerDetectionRange: 10
+  attackRange: 1.5
 --- !u!195 &602057073
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2036,7 +2032,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 801604266}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 8.27, y: 4.48, z: -1.9699998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2343,6 +2339,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a379da69c7748564eb4e2b2fbcb8fb4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerDetectionRange: 10
+  attackRange: 1.5
 --- !u!195 &991294438
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2584,6 +2582,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a379da69c7748564eb4e2b2fbcb8fb4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerDetectionRange: 10
+  attackRange: 1.5
 --- !u!1 &1100822536
 GameObject:
   m_ObjectHideFlags: 0
@@ -2813,7 +2813,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1339217585
 Transform:
   m_ObjectHideFlags: 0
@@ -3366,6 +3366,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a379da69c7748564eb4e2b2fbcb8fb4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerDetectionRange: 10
+  attackRange: 1.5
 --- !u!195 &1594523150
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4638,6 +4640,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a379da69c7748564eb4e2b2fbcb8fb4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerDetectionRange: 10
+  attackRange: 1.5
 --- !u!195 &1951382711
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4742,7 +4746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b1e1fa9557e85a4e9c323da35c90f9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 10
   dir: {x: 0, y: 0, z: 0}
   groundYOffset: 0
   groundMask:
@@ -4840,7 +4844,7 @@ MonoBehaviour:
     m_AccelTime: 0
     m_DecelTime: 0
     m_InputAxisName: Mouse Y
-    m_InputAxisValue: 0
+    m_InputAxisValue: 30
     m_InvertInput: 1
     m_MinValue: -60
     m_MaxValue: 60
@@ -4851,7 +4855,8 @@ MonoBehaviour:
       m_RecenteringTime: 0
       m_LegacyHeadingDefinition: 0
       m_LegacyVelocityFilterStrength: 0
-  camFollowPos: {fileID: 801604269}
+  camFollowPos: {fileID: 749522810}
+  mouseSense: 1
 --- !u!1 &2012787277
 GameObject:
   m_ObjectHideFlags: 0
@@ -4884,6 +4889,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a379da69c7748564eb4e2b2fbcb8fb4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerDetectionRange: 10
+  attackRange: 1.5
 --- !u!195 &2012787279
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5003,6 +5010,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a379da69c7748564eb4e2b2fbcb8fb4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerDetectionRange: 10
+  attackRange: 1.5
 --- !u!195 &2064151895
 NavMeshAgent:
   m_ObjectHideFlags: 0
