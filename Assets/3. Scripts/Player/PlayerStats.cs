@@ -5,6 +5,17 @@ using UnityEngine.Events;
 
 public class PlayerStats : Singleton<PlayerStats>
 {
+    public enum Status
+    {
+        Idle,       //정지상태
+        Walk,       //걷는상태
+        Run,        //달리기 상태 (걷는상태 -> 달리기 상태 파생)
+        Aim,        //에임상태 (에임상태->공격 상태 파생)
+        Attack,     //공격상태
+        Hitted,     //피격상태
+        Dead,       //사망 -> 게임끝
+    }
+    public Status playerStatus { get; set; }
     private float maxHP = 100;
     private float currHP;
     private int currGold = 100000;
