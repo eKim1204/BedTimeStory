@@ -48,6 +48,6 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         _shuttingDown = true;
     }
 
-    //MainScene ÀÌÀü¿¡ ¹Ýµå½Ã Init(Awake)ÀÌ ÇÊ¿äÇÔ 
+    //MainScene ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ýµï¿½ï¿½ Init(Awake)ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ 
     public abstract void Init();
 }
