@@ -19787,7 +19787,6 @@ MonoBehaviour:
   hitPrefab: {fileID: 6394855951143000011, guid: 2db29b3b6b1a8b6468716e5eb23adb30, type: 3}
   trails:
   - {fileID: 3767454946084226347}
-  damage: 100
 --- !u!1 &7588169066983344439
 GameObject:
   m_ObjectHideFlags: 0
