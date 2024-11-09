@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStats : MonoBehaviour
+public class PlayerStats : Singleton<PlayerStats>
 {
     private float maxHP = 100;
     private float currHP;
@@ -13,18 +13,31 @@ public class PlayerStats : MonoBehaviour
         currHP = maxHP;
     }
 
-    void TakeDamage(float amount)
+    public void TakeDamage(float amount)
     {
         currHP = Mathf.Clamp(currHP - amount, 0, maxHP);
     }
 
-    void Recover(float amount)
+    public void Recover(float amount)
     {
         currHP = Mathf.Clamp(currHP + amount, 0, maxHP);
     }
 
-    void GetGold(int amount)
+    public void GetGold(int amount)
     {
         currGold += amount;
+    }
+
+    public void UseGold(int amount)
+    {
+        if (currGold >= amount)
+            currGold -= amount;
+        else
+            Debug.Log("∞ÒµÂ ∫Œ¡∑");
+    }
+
+    public override void Init()
+    {
+        throw new System.NotImplementedException();
     }
 }
