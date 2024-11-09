@@ -28,6 +28,14 @@ public class EnemyAI : MonoBehaviour
 
 
     //=================================
+    void Update()
+    {
+        if (GamePlayManager.isGamePlaying == false)
+        {
+            OnStopped();
+        }
+    }
+
 
     public void OnUpdate()
     {        

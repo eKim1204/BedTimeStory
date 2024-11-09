@@ -42,6 +42,11 @@ public class PlayerStats : Singleton<PlayerStats>
     public void TakeDamage(float amount)
     {
         currHP = Mathf.Clamp(currHP - amount, 0, maxHP);
+
+        if (currHP <= 0)
+        {
+            Die();
+        }
     }
 
     public void Recover(float amount)
@@ -88,6 +93,12 @@ public class PlayerStats : Singleton<PlayerStats>
 
     public override void Init()
     {
-        throw new System.NotImplementedException();
+        
+    }
+
+
+    void Die()
+    {
+        GamePlayManager.Instance.GameOver();
     }
 }

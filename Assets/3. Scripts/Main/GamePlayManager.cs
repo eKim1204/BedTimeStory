@@ -52,4 +52,10 @@ public class GamePlayManager : DestroyableSingleton<GamePlayManager>
         
     }
 
+
+    public void GameOver()
+    {
+        isGamePlaying = false;
+    }
+
 }

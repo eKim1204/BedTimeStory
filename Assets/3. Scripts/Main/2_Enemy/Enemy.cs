@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (isAlive == false || GamePlayManager.isGamePlaying == false || currHp <= 0)
+        if (isAlive == false || GamePlayManager.isGamePlaying == false )
         {
             return;
         }
