@@ -15,8 +15,8 @@ MonoBehaviour:
   waveInfos:
   - num: 1
     duration: 180
-    cycleGap: 2
-    spawnPerCycle: 2
+    cycleGap: 180
+    spawnPerCycle: 1
   - num: 2
     duration: 180
     cycleGap: 2
