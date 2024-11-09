@@ -98,9 +98,12 @@ public class UpgradeMenuItem : MonoBehaviour
 
     public void OnSelected()
     {
-        if(type == 0)
+        Debug.Log($"type {type} ,value {value}");
+
+        if (type == 0)
         {
             PlayerStats.Instance.SetAttackPower(value);
+            
         }
         else if (type == 1)
         {
@@ -114,7 +117,5 @@ public class UpgradeMenuItem : MonoBehaviour
         {
             PlayerStats.Instance.SetSkillCooltime(value);
         }
-
-        upgradeSystem.onItemSelected.Invoke();
     }
 }
