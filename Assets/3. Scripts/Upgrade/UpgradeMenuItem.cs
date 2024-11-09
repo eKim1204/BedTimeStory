@@ -23,7 +23,29 @@ public class UpgradeMenuItem : MonoBehaviour
 
     void SetGradeTxt(int grade)
     {
-        txt_grade.SetText(((char)('A' + grade)).ToString());
+        
+
+        switch(grade)
+        {
+            case 0:
+                txt_grade.SetText("Legendary");
+                break;
+            case 1:
+                txt_grade.SetText("Epic");
+                break;
+            case 2:
+                txt_grade.SetText("Unique");
+                break;
+            case 3:
+                txt_grade.SetText("Normal");
+                break;
+            case 4:
+                txt_grade.SetText("UnCommon");
+                break;
+            case 5:
+                txt_grade.SetText("Common");
+                break;
+        }
     }
     void SetValueTxt(int value)
     {
@@ -70,6 +92,8 @@ public class UpgradeMenuItem : MonoBehaviour
             LockButton.GetComponent<Image>().sprite = unlockedImage;
             upgradeSystem.onItemLocked.Invoke();
         }
+
+        LockButton.GetComponent<Image>().SetNativeSize();
     }
 
     public void OnSelected()
