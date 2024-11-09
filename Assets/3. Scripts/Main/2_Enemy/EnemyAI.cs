@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using System;
 
 using GameUtil;
-using UnityEditor.Experimental.GraphView;
+
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyAI : MonoBehaviour
@@ -18,15 +19,23 @@ public class EnemyAI : MonoBehaviour
     
     NavMeshAgent navAgent;
     
+    Enemy enemy;
+
     public float playerDetectionRange = 10;
     public float attackRange = 1.5f;
 
-    void Update()
-    {
+
+
+
+    //=================================
+
+    public void OnUpdate()
+    {        
         // 플레이어 쫓는 경우
         if (t.position.GetSqrDistWith(t_player.position) <= playerDetectionRange * playerDetectionRange )
         {   
             OnPlayerInRange();
+            
         }
         // 타워 쫓는경우
         else
@@ -37,7 +46,7 @@ public class EnemyAI : MonoBehaviour
 
 
         // 아직 잘 되는 지는 모르겠음.
-        if ( t.position.GetSqrDistWith(target.position) <= attackRange)
+        if ( t.position.GetSqrDistWith(target.position) <= attackRange * attackRange)   // 공격사거리 안 일때,
         {
             OnTargetInAttackRange();
         }
@@ -49,11 +58,13 @@ public class EnemyAI : MonoBehaviour
 
 
 
-    public void Init(EnemyDataSO enemyData, int waveNum)
+    public void Init(Enemy enemy, int waveNum)
     {
+        this.enemy = enemy;
+        
         navAgent = GetComponent<NavMeshAgent>();
         navAgent.autoBraking = false;
-
+        
 
         t=transform;
         t_tower = Tower.Instance.transform;
@@ -61,9 +72,11 @@ public class EnemyAI : MonoBehaviour
 
 
         //
-        navAgent.speed = enemyData.movementSpeed;
-        attackRange = enemyData.attackRange;
-        playerDetectionRange = enemyData.playerDectectionRange;
+        attackRange = enemy.enemyData.attackRange;
+        playerDetectionRange = enemy.enemyData.playerDectectionRange;
+
+        navAgent.speed = enemy.movementSpeed;
+        // navAgent.stoppingDistance = attackRange;
     }
 
 
@@ -82,6 +95,7 @@ public class EnemyAI : MonoBehaviour
     void OnTargetInAttackRange()
     {
         navAgent.isStopped = true;
+        navAgent.velocity = Vector3.zero;
     }
 
 
@@ -89,4 +103,23 @@ public class EnemyAI : MonoBehaviour
     {
         navAgent.isStopped = false;
     }
+
+
+    //================================
+    
+    public void OnStopped()
+    {
+        navAgent.isStopped = true;
+        navAgent.velocity = Vector3.zero;
+    }
+
+    public void OnDie()
+    {
+        navAgent.isStopped = true;
+        navAgent.velocity = Vector3.zero;
+    }
+
+
+
+
 }

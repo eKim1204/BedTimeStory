@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class WaveManager : DestroyableSingleton<WaveManager>
 {
-    
+    [SerializeField] WaveInfoUI waveInfoUI;
     
     
     
@@ -17,39 +17,63 @@ public class WaveManager : DestroyableSingleton<WaveManager>
     public int clearedWaveNum;
 
     public int currWaveNum => clearedWaveNum +1;
-    
-    public bool waveFinished {get;private set;}
 
     public bool isWavePlaying; 
+    public float waveStartTime;
     public float wavePlayTime;
+    
+    Coroutine durationRoutine;
+    Coroutine spawnRoutine;
 
-
-    //=======================================================================================================
-
-    void Update()
-    {
-        if (isWavePlaying)
-        {
-            wavePlayTime += Time.deltaTime;
-        }
-    }
-
+    //=======================================================================================================s
 
     public void StartWave()
     {
-        
+        Time.timeScale = 16;
+
+        waveStartTime = Time.time;
         wavePlayTime = 0;
 
         WaveInfo waveInfo  = stageWaveInfo.waveInfos[clearedWaveNum];
         
         float waveDuration = waveInfo.duration;
-        int spawnPerSeconds = waveInfo.spawnPerSeconds;
+        float cycleGap = waveInfo.cycleGap;
+        int spawnPerCycle = waveInfo.spawnPerCycle;
+        
 
         IncreaseDifficulty();
-        StartCoroutine( DurationRoutine (waveDuration));
-        StartCoroutine( SpawnRoutine (spawnPerSeconds));
+        durationRoutine = StartCoroutine( DurationRoutine (waveDuration));
+        spawnRoutine = StartCoroutine( SpawnRoutine (spawnPerCycle, cycleGap, waveDuration));
 
+
+        GameEventManager.Instance.onWaveStart.Invoke();
     }  
+
+
+    /// <summary>
+    ///  웨이브 종료 : 진행중이던 코루틴을 종료한다. 
+    /// </summary>
+    public void FinishWave()
+    {
+        if( isWavePlaying == false)
+        {
+            return;
+        }
+        isWavePlaying = false;
+        
+        
+        if (durationRoutine != null)
+        {
+            StopCoroutine(durationRoutine);
+        }
+        if (spawnRoutine != null)
+        {
+            StopCoroutine(spawnRoutine);
+        }
+
+        clearedWaveNum++;
+        GameEventManager.Instance.onWaveFinish.Invoke();
+    }
     
 
     /// <summary>
@@ -61,7 +85,6 @@ public class WaveManager : DestroyableSingleton<WaveManager>
         
     }
 
-
     /// <summary>
     /// 웨이브 지속시간 끝나는거 감지
     /// </summary>
@@ -69,30 +92,44 @@ public class WaveManager : DestroyableSingleton<WaveManager>
     /// <returns></returns>
     IEnumerator DurationRoutine( float waveDuration)
     {
+        waveStartTime = Time.time;
         isWavePlaying = true;
-        yield return new WaitForSeconds(waveDuration);
-        isWavePlaying = false;;
+        while(wavePlayTime < waveDuration )
+        {
+            wavePlayTime = Time.time - waveStartTime;
+
+            yield return new WaitForSeconds(1f);
+        }
+        FinishWave();
     }
 
     /// <summary>
     /// 적 생성 루틴. 
     /// </summary>
-    /// <param name="spawnPerSeconds"></param>
+    /// <param name="spawnPerCycle"></param>
     /// <returns></returns>
-    IEnumerator SpawnRoutine(int spawnPerSeconds)
+    IEnumerator SpawnRoutine( int spawnPerCycle,float cycleGap, float waveDuration)
     {
-        while(isWavePlaying)
+        int totalSpawnCount = spawnPerCycle *   (int)(waveDuration/ cycleGap);
+        int currSpawnCount = 0;
+        
+        while( isWavePlaying )
         {
-            for(int i=0;i< spawnPerSeconds;i++)
+            for(int i=0;i< spawnPerCycle;i++)
             {
-                Instantiate( prefab_enemy ).GetComponent<Enemy>().Init(clearedWaveNum);    // 여기서 스폰 위치 찾아야함. 
+                Vector3 spawnPos = Stage.Instance.GetRandomSpawnPoint();
+                
+                Enemy enemy = Instantiate( prefab_enemy,spawnPos,Quaternion.identity ).GetComponent<Enemy>();  
+                enemy.Init(clearedWaveNum);
             }
-            
-            
-            
-            yield return new WaitForSeconds(1f);
+
+            currSpawnCount += spawnPerCycle;        //2초마다이면 1초마다 어느정도는 소환하도록 수정할 예정. 
+            // Debug.Log($"  적생성 : {cycleGap}초 마다 {spawnPerCycle}마리 , 총 :  {currSpawnCount} / {totalSpawnCount}");
+
+            yield return new WaitForSeconds(cycleGap);
         }
 
+        
     }
 
 }

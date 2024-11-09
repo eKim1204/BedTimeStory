@@ -16,6 +16,15 @@ namespace GameUtil
         {   
             return Vector3.Distance(currPos, targetPos);
         }
+
+        public static Vector3 WithFloorHeight(this Vector3 pos)
+        {
+            return new Vector3(pos.x,0,pos.z);
+        }
+        public static Vector3 WithWaistHeight(this Vector3 pos)
+        {
+            return new Vector3(pos.x,1,pos.z);
+        }
     }
 }
 

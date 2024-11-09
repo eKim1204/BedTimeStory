@@ -13,33 +13,43 @@ MonoBehaviour:
   m_Name: WaveData
   m_EditorClassIdentifier: 
   waveInfos:
-  - waveNum: 1
-    waveDuration: 300
-    spawnPerSeconds: 2
-  - waveNum: 2
-    waveDuration: 300
-    spawnPerSeconds: 5
-  - waveNum: 3
-    waveDuration: 300
-    spawnPerSeconds: 7
-  - waveNum: 4
-    waveDuration: 300
-    spawnPerSeconds: 12
-  - waveNum: 5
-    waveDuration: 300
-    spawnPerSeconds: 17
-  - waveNum: 6
-    waveDuration: 300
-    spawnPerSeconds: 20
-  - waveNum: 7
-    waveDuration: 300
-    spawnPerSeconds: 25
-  - waveNum: 8
-    waveDuration: 300
-    spawnPerSeconds: 35
-  - waveNum: 9
-    waveDuration: 300
-    spawnPerSeconds: 40
-  - waveNum: 10
-    waveDuration: 300
-    spawnPerSeconds: 50
+  - num: 1
+    duration: 180
+    cycleGap: 2
+    spawnPerCycle: 2
+  - num: 2
+    duration: 180
+    cycleGap: 2
+    spawnPerCycle: 3
+  - num: 3
+    duration: 180
+    cycleGap: 2
+    spawnPerCycle: 4
+  - num: 4
+    duration: 180
+    cycleGap: 2
+    spawnPerCycle: 5
+  - num: 5
+    duration: 180
+    cycleGap: 2
+    spawnPerCycle: 6
+  - num: 6
+    duration: 180
+    cycleGap: 2
+    spawnPerCycle: 7
+  - num: 7
+    duration: 180
+    cycleGap: 2
+    spawnPerCycle: 8
+  - num: 8
+    duration: 180
+    cycleGap: 2
+    spawnPerCycle: 9
+  - num: 9
+    duration: 180
+    cycleGap: 2
+    spawnPerCycle: 10
+  - num: 10
+    duration: 180
+    cycleGap: 2
+    spawnPerCycle: 12

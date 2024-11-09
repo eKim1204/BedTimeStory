@@ -12,6 +12,7 @@ public class GameEventManager : Singleton<GameEventManager>
 
 
     public UnityEvent onWaveStart = new();   // 웨이브 시작시.
+    public UnityEvent onWaveFinish = new();   // 웨이브 끝 시.
 
 
 

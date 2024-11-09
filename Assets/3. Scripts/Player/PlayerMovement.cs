@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //일단 사용하지 않습니다.
+    enum PlayerState
+    {
+        None,
+        Walk,
+        Run,
+        //etc..
+    }
     [SerializeField] public float moveSpeed = 3f;
     [HideInInspector] public Vector3 dir;
     float hInput, vInput;
@@ -27,16 +35,20 @@ public class PlayerMovement : MonoBehaviour
         vInput = Input.GetAxis("Vertical");
 
         dir = transform.forward * vInput + transform.right * hInput;
-
-        controller.Move(dir * moveSpeed * Time.deltaTime);
+        if(IsRun())
+        {
+            Debug.Log("State -> Run!");
+            controller.Move(dir * (moveSpeed * 5f) * Time.deltaTime);
+        }   
+        else
+            controller.Move(dir * moveSpeed * Time.deltaTime);
     }
     // Update is called once per frame
     void Update()
-    { 
+    {
         GetDirectionAndMove();
         Gravity();
     }
-
     private bool IsGrounded()
     {
         spherePos = new Vector3(transform.position.x, transform.position.y - groundYOffset, transform.position.z);
@@ -44,9 +56,10 @@ public class PlayerMovement : MonoBehaviour
             return true;
         return false;
     }
+    private bool IsRun() => Input.GetKey(KeyCode.LeftShift);
     private void Gravity()
     {
-        if (IsGrounded())
+        if (!IsGrounded())
             velocity.y += gravity * Time.deltaTime;
         else if (velocity.y < 0)
             velocity.y = -2;
