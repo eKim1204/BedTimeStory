@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e099d83d60e6ca442954504ee893504a, type: 3}
   m_Name: EnemyInitData_Range
   m_EditorClassIdentifier: 
-  maxHp: 80
+  maxHp: 11111
   movementSpeed: 3
   attackSpeed: 3
   attackRange: 8
