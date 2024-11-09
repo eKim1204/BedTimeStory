@@ -64,6 +64,8 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 7331839071635631618, guid: 3c27962e059ae4643b9984e4ba0fc482, type: 3}
   - {fileID: 7331839071635631618, guid: 1677b1894bfe8f64e923931e9292f71f, type: 3}
+  - {fileID: 7331839071635631618, guid: 61e5b380349d64d46857415562b9afd2, type: 3}
+  - {fileID: 7331839071635631618, guid: f700f52ef5a35494ebb24495c910b33e, type: 3}
   prefab_enemy: {fileID: 7331839071635631618, guid: 3c27962e059ae4643b9984e4ba0fc482, type: 3}
   stageWaveInfo: {fileID: 11400000, guid: 7360a3e7c85a9964a9b5cbdb0bad87ab, type: 2}
   clearedWaveNum: 0
