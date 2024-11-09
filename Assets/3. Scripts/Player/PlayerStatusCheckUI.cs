@@ -42,12 +42,12 @@ public class PlayerStatusCheckUI : MonoBehaviour
             .OnStart(() =>
             {
                 crosshair2.gameObject.SetActive(true);
-                crosshair.transform.localScale = new Vector3(1, 1, 1);
-                crosshair2.transform.localScale = new Vector3(1, 1, 1);
+                crosshair.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+                crosshair2.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
             })
-            .Join(crosshair.transform.DOPunchScale(new Vector3(0.25f, 0.25f, 0f), 0.125f))
+            .Join(crosshair.transform.DOPunchScale(new Vector3(0.4f, 0.4f, 0f), 0.125f))
             .Join(crosshair.DOColor(new Color(1,0,0), 0.125f))
-            .Join(crosshair2.transform.DOPunchScale(new Vector3(1f, 1f, 0f), 0.125f))
+            .Join(crosshair2.transform.DOPunchScale(new Vector3(1.5f, 1.5f, 0f), 0.125f))
             .Join(crosshair2.DOColor(new Color(1,0,0), 0.125f))
             .OnComplete(()=>
             {
