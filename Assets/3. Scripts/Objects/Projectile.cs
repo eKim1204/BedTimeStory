@@ -2,16 +2,11 @@ using DG.Tweening.Core.Easing;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
-using static UnityEngine.ParticleSystem;
-using static UnityEngine.Rendering.DebugUI.Table;
 
 public class Projectile : MonoBehaviour
 {
     public GameObject hitPrefab;
     public List<GameObject> trails;
-    public bool bounce = false;
-
     private void Start()
     {
         StartCoroutine(DestroyCoroutine());
@@ -24,7 +19,7 @@ public class Projectile : MonoBehaviour
         Explode();
     }
 
-    private void Explode()
+    protected void Explode()
     {
         if (trails.Count > 0)
         {
@@ -39,7 +34,6 @@ public class Projectile : MonoBehaviour
                 }
             }
         }
-
         if (hitPrefab != null)
         {
             var hitVFX = Instantiate(hitPrefab, transform.position, Quaternion.identity) as GameObject;
@@ -58,9 +52,20 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision co)
     {
-        Explode();
+        // Damage Enemy
+        DamageEnemy(co);
 
+        Explode();
         StartCoroutine(DestroyParticle(0f));
+    }
+
+    protected virtual void DamageEnemy(Collision co)
+    {
+        Enemy enemy = null;
+        if (enemy = co.gameObject.GetComponent<Enemy>())
+        {
+            enemy.GetDamaged(PlayerStats.Instance.AttackPower);
+        }
     }
 
     public IEnumerator DestroyParticle(float waitTime)

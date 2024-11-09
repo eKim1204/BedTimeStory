@@ -21,8 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Cirlce18_AB
-  m_Shader: {fileID: -6465566751694194690, guid: 22cc0b3f282ecd54388ca90020d92e21,
-    type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 22cc0b3f282ecd54388ca90020d92e21, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -120,7 +119,7 @@ Material:
     - AlphaClip_: 0.01
     - Vector1_AE769210: 1
     - _AlphaClip: 0
-    - _BUILTIN_QueueControl: -1
+    - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
     - _Blend: 0
     - _BlendOp: 0

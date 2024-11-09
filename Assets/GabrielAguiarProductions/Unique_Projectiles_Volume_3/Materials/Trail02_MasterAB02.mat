@@ -128,7 +128,7 @@ Material:
     - Vector1_8F22EE36: 0.01
     - Vector1_C1728026: 1.95
     - Vector1_D1034171: 0
-    - _BUILTIN_QueueControl: -1
+    - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
     - _BumpScale: 1
     - _ColorMultiplier: 2.5

@@ -140,7 +140,7 @@ Material:
     - Vector1_C6A287A: 0
     - Vector1_D1034171: 0.05
     - _AlphaClip: 0
-    - _BUILTIN_QueueControl: -1
+    - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
     - _Blend: 0
     - _BlendOp: 0

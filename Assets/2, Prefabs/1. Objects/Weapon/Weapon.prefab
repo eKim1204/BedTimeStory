@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7384516944435984176}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 1440757233762788531}
   - component: {fileID: 5452358164743634106}
   - component: {fileID: 751993480512161556}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,4 +151,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 1367524025346344, guid: b1b687da208cfcb4f9fc04c99fe67ad8, type: 3}
+  rocketProjectilePrefab: {fileID: 5579294690110463380, guid: edf9dc89fe3736f429d9ea8e79dc1300, type: 3}
   muzzle: {fileID: 7384516944435984176}
