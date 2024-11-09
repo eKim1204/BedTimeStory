@@ -14,7 +14,7 @@ public class EnemyAI : MonoBehaviour
     Transform t_tower;
     Transform t_player;
     
-    Transform target;
+    [SerializeField] Transform target;
     
     
     NavMeshAgent navAgent;
@@ -43,10 +43,15 @@ public class EnemyAI : MonoBehaviour
             OnPlayerOutOfRange();
         }
 
+        //
+        if( enemy.isCasting )
+        {
+            return;
+        }
 
 
         // 아직 잘 되는 지는 모르겠음.
-        if ( t.position.GetSqrDistWith(target.position) <= attackRange * attackRange)   // 공격사거리 안 일때,
+        if ( t.position.WithFloorHeight().GetSqrDistWith(target.position.WithFloorHeight()) <= attackRange * attackRange)   // 공격사거리 안 일때,
         {
             OnTargetInAttackRange();
         }
@@ -94,8 +99,15 @@ public class EnemyAI : MonoBehaviour
 
     void OnTargetInAttackRange()
     {
+        if( enemy.attackAvailable )
+        {
+            enemy.Attack();
+        }
+        
         navAgent.isStopped = true;
         navAgent.velocity = Vector3.zero;
+
+        
     }
 
 
@@ -120,11 +132,4 @@ public class EnemyAI : MonoBehaviour
     }
 
     //==================================
-
-    void OnAttack()
-    {
-        
-    }
-
-
 }

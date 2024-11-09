@@ -44,7 +44,7 @@ public class Projectile : MonoBehaviour
         Enemy enemy = null;
         if (enemy = co.gameObject.GetComponent<Enemy>())
         {
-            Debug.Log(PlayerStats.Instance.AttackPower);
+            // Debug.Log(PlayerStats.Instance.AttackPower);
             enemy.GetDamaged(PlayerStats.Instance.AttackPower);
         }
     }

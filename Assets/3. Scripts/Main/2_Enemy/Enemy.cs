@@ -38,6 +38,8 @@ public class Enemy : MonoBehaviour
     public float lastAttackTime;
     public bool attackAvailable => Time.time >= lastAttackTime + enemyData.attackSpeed;
 
+    public bool isCasting;
+
 
     Slider_EnemyHp enemyState;
     //===================================
@@ -179,31 +181,40 @@ public class Enemy : MonoBehaviour
 
     void DropItem()
     {        
-        string str = "돈1원 ";
+        // string str = "돈1원 ";
 
         PlayerStats.Instance.GetGold(1);
         int rand = UnityEngine.Random.Range(0, 100);
         if ( 95<= rand)
         // if ( 66<= rand)
         {
-            str+="골드주머니 ";
+            // str+="골드주머니 ";
             DropItemManager.Instance.GetItem_Pouch(t.position);
         }
         else if ( 90 <=rand )
         {
-            str+="소형 포션 ";
+            // str+="소형 포션 ";
             DropItemManager.Instance.GetItem_Potion(t.position);
 
         }
-        Debug.Log($"아이템 드랍  r {rand} : {str}");
+        // Debug.Log($"아이템 드랍  r {rand} : {str}");
     }
 
 
-    public void OnAttack()
+    public void Attack()
     {
+        isCasting = true;
+        enemyData.Attack(this);
         lastAttackTime = Time.time;
+        Debug.Log("어택");
+
+        StopAttack();
     }
 
+    public void StopAttack()
+    {
+        isCasting = false;
+    }
 
 
 

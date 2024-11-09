@@ -18,5 +18,11 @@ public class EnemyDataSO : ScriptableObject
     public float inc_maxHp = 10;
     public float inc_movementSpeed = 0.3f;
     public float inc_dmg = 3;
+
+
+    public void Attack(Enemy enemy)
+    {
+        
+    }
     
 }
