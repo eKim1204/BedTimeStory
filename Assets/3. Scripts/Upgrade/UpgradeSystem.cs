@@ -76,9 +76,8 @@ public class UpgradeSystem : MonoBehaviour
             int value = Convert.ToInt32(row["Value"]);
 
             upgradeMenuItem.Construct(i, grade, value);
+            upgradeMenuItem.OnSelected();
         }
-
-        ChangeRerollCost();
     }
 
     private void SetRecoverButtonText()
