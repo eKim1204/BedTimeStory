@@ -24,6 +24,7 @@ public class PlayerStatusCheckUI : MonoBehaviour
     private void ChangeArmoText(MEventType MEventType, Component Sender, EventArgs args = null)
     {
         TransformEventArgs tArgs = args as TransformEventArgs;
+        text.transform.DOPunchScale(new Vector3(0.25f, 0.25f), 0.125f);
         text.text = string.Format("{0}/{1}",tArgs.value[0].ToString(),tArgs.value[1].ToString());
     }
     private void ReloadingText(MEventType MEventType, Component Sender, EventArgs args = null)
