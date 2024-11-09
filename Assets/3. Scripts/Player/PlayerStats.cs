@@ -1,12 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerStats : Singleton<PlayerStats>
 {
     private float maxHP = 100;
     private float currHP;
-    private int currGold = 0;
+    private int currGold = 100000;
+    public int CurrGold => currGold;
+
+    private float attackPower;
+    private float moveSpeed;
+    private float reloadSpeed;
+    private float skillCooltime;
+
+    public float AttackPower => attackPower;
+    public float MoveSpeed => moveSpeed;
+    public float ReloadSpeed => reloadSpeed;
+    public float SkillCooltime => skillCooltime;
+
+    public UnityEvent onGoldChanged;
 
     private void Awake()
     {
@@ -26,6 +40,8 @@ public class PlayerStats : Singleton<PlayerStats>
     public void GetGold(int amount)
     {
         currGold += amount;
+
+        onGoldChanged.Invoke();
     }
 
     public void UseGold(int amount)
@@ -33,7 +49,29 @@ public class PlayerStats : Singleton<PlayerStats>
         if (currGold >= amount)
             currGold -= amount;
         else
-            Debug.Log("∞ÒµÂ ∫Œ¡∑");
+            throw new System.Exception("invalid use of gold!");
+
+        onGoldChanged.Invoke();
+
+        Debug.Log("Currgold : " + currGold);
+    }
+
+    public void SetAttackPower(float value)
+    {
+        attackPower = value;
+    }
+
+    public void SetMoveSpeed(float value)
+    {
+        moveSpeed = value;
+    }
+    public void SetReloadSpeed(float value)
+    {
+        reloadSpeed = value;
+    }
+    public void SetSkillCooltime(float value)
+    {
+        skillCooltime = value;
     }
 
     public override void Init()

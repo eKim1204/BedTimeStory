@@ -170,7 +170,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 180.62845, y: 49.9216}
+  m_AnchoredPosition: {x: 290, y: 109.77}
   m_SizeDelta: {x: 221.2569, y: 59.8432}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7038057976039636083
@@ -361,8 +361,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closeButton: {fileID: 2090459442976470425}
   rerollButton: {fileID: 3644779790381676091}
-  recoverHPButton: {fileID: 4579091797471154652}
+  hpRecoverButton: {fileID: 4579091797471154652}
   upgradeMenu: {fileID: 6820141402371933761}
+  onItemLocked:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3188760412624951466
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,7 +536,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -138.0629, y: 49.922}
+  m_AnchoredPosition: {x: -351, y: 109.77}
   m_SizeDelta: {x: 196.1259, y: 59.843}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8165716953415096230
@@ -959,6 +962,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6820141402371933761}
     m_Modifications:
+    - target: {fileID: 2255390451992864075, guid: 878f07e374d591144be91453413d680d, type: 3}
+      propertyPath: upgradeSystem
+      value: 
+      objectReference: {fileID: 3293871892525094340}
     - target: {fileID: 2383325878629825390, guid: 878f07e374d591144be91453413d680d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1061,6 +1068,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6820141402371933761}
     m_Modifications:
+    - target: {fileID: 2255390451992864075, guid: 878f07e374d591144be91453413d680d, type: 3}
+      propertyPath: upgradeSystem
+      value: 
+      objectReference: {fileID: 3293871892525094340}
     - target: {fileID: 2383325878629825390, guid: 878f07e374d591144be91453413d680d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1163,6 +1174,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6820141402371933761}
     m_Modifications:
+    - target: {fileID: 2255390451992864075, guid: 878f07e374d591144be91453413d680d, type: 3}
+      propertyPath: upgradeSystem
+      value: 
+      objectReference: {fileID: 3293871892525094340}
     - target: {fileID: 2383325878629825390, guid: 878f07e374d591144be91453413d680d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1265,6 +1280,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6820141402371933761}
     m_Modifications:
+    - target: {fileID: 2255390451992864075, guid: 878f07e374d591144be91453413d680d, type: 3}
+      propertyPath: upgradeSystem
+      value: 
+      objectReference: {fileID: 3293871892525094340}
     - target: {fileID: 2383325878629825390, guid: 878f07e374d591144be91453413d680d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
