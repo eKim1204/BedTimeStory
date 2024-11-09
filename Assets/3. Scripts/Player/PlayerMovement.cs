@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using static SoundListener;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -17,10 +18,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float gravity = -9.81f;
     Vector3 velocity;
 
+    [Header("걸어가는 사운드")]
+    [SerializeField] SoundEventSO[] soundEventSOs;
+    private Coroutine walkSoundCoroutine;
+    private int soundIndex = 0;
+    private bool isWalking = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        controller = GetComponent<CharacterController>();    
+        controller = GetComponent<CharacterController>();
+        walkSoundCoroutine = StartCoroutine(PlayerWalkSound());
     }
     private void GetDirectionAndMove()
     {
@@ -30,14 +38,19 @@ public class PlayerMovement : MonoBehaviour
         dir = transform.forward * vInput + transform.right * hInput;
         
         if(hInput == 0 && vInput == 0)
+        {
+            isWalking = false;
             PlayerStats.Instance.playerStatus = PlayerStats.Status.Idle;
+        }
         else if(IsRun())
         {
+            isWalking = true;
             PlayerStats.Instance.playerStatus = PlayerStats.Status.Walk;
             controller.Move(dir * (moveSpeed * 5f) * Time.deltaTime);
         }
         else
         {
+            isWalking = true;
             PlayerStats.Instance.playerStatus = PlayerStats.Status.Run;
             controller.Move(dir * moveSpeed * Time.deltaTime);
         }
@@ -64,5 +77,29 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -2;
 
         controller.Move(velocity * Time.deltaTime);
+    }
+    IEnumerator PlayerWalkSound()
+    {
+        Debug.Log("Waiting Walking");
+        yield return new WaitUntil(() => isWalking);
+
+        soundEventSOs[soundIndex++].Raise();
+        if (soundEventSOs.Length <= soundIndex)
+            soundIndex = 0;
+
+        if (PlayerStats.Instance.playerStatus == PlayerStats.Status.Run)
+        {
+            Debug.Log(" Start Walking 0.5f");
+            yield return new WaitForSeconds(0.5f);
+        }
+        else if (PlayerStats.Instance.playerStatus == PlayerStats.Status.Walk)
+        {
+            Debug.Log(" Start Walking 0.25f");
+            yield return new WaitForSeconds(0.25f);
+        }
+        else
+            yield return null;
+
+        StartCoroutine(PlayerWalkSound());
     }
 }
