@@ -7,6 +7,8 @@ public class GamePlayManager : DestroyableSingleton<GamePlayManager>
 {   
     [SerializeField] Button testWaveStartBtn;
 
+    public static bool isGamePlaying;
+
     //
     void Start()
     {
@@ -18,6 +20,8 @@ public class GamePlayManager : DestroyableSingleton<GamePlayManager>
 
     public void StartGame()
     {
+        isGamePlaying = true;
+        
         Tower.Instance.Init();
         Stage.Instance.Init();
         
