@@ -19,7 +19,7 @@ public class DropItemManager : DestroyableSingleton<DropItemManager>
     //포션 
     public DropItem GetItem_Potion(Vector3 pos)
     {
-        return Instantiate( prefab_pouch, pos ,Quaternion.identity).GetComponent<DropItem>();
+        return Instantiate( prefab_potion, pos ,Quaternion.identity).GetComponent<DropItem>();
     }
 
 
