@@ -17,10 +17,11 @@ public class UpgradeSystem : MonoBehaviour
     List<Dictionary<string, object>> dataset;
 
     [HideInInspector] public UnityEvent onItemLocked;
+    [HideInInspector] public UnityEvent onItemSelected;
 
     float hpRecoverRate = 100;
-    int hpRecoverCost = 40;
-    int rerollCost = 0; // 처음 roll은 0, reroll 시에는 코스트가 듬
+    int hpRecoverCost = 100;
+    int rerollCost = 0; // 처음 roll은 0원, reroll 시에는 코스트가 듬
 
     private void Awake()
     {
@@ -33,13 +34,11 @@ public class UpgradeSystem : MonoBehaviour
 
     private void Start()
     {
-        PlayerStats.Instance.onGoldChanged.AddListener(SetButtonsInteractable);
         onItemLocked.AddListener(ChangeRerollCost);
-    }
+        onItemSelected.AddListener(ClosePanel);
 
-    private void OnEnable()
-    {
         Roll();
+        SetRecoverButtonText();
     }
 
     private void Roll()
@@ -85,7 +84,7 @@ public class UpgradeSystem : MonoBehaviour
     private void SetRecoverButtonText()
     {
         hpRecoverButton.GetComponentInChildren<TextMeshProUGUI>().
-            SetText($"HP {hpRecoverRate} 회복 : {hpRecoverCost}");
+            SetText($"HP {hpRecoverRate} recover : {hpRecoverCost}");
     }
 
     public void OnRecoverButtonPressed()
@@ -96,15 +95,20 @@ public class UpgradeSystem : MonoBehaviour
         hpRecoverCost *= 2;
 
         SetRecoverButtonText();
+        SetButtonsInteractable();
     }
 
     public void OnRerollButtonPressed()
     {
         Roll();
+
+        SetButtonsInteractable();
     }
 
     private void SetButtonsInteractable()
     {
+        Debug.Log("button check");
+
         if(PlayerStats.Instance.CurrGold >= hpRecoverCost)
         {
             hpRecoverButton.interactable = true;
@@ -161,5 +165,13 @@ public class UpgradeSystem : MonoBehaviour
         }
 
         rerollButton.GetComponentInChildren<TextMeshProUGUI>().SetText($"Reroll : {rerollCost}");
+    }
+
+    private void ClosePanel()
+    {
+        rerollCost = 0;
+        Roll();
+
+        gameObject.SetActive(false);
     }
 }

@@ -27,7 +27,23 @@ public class UpgradeMenuItem : MonoBehaviour
     }
     void SetValueTxt(int value)
     {
-        txt_value.SetText(value.ToString());
+        if(type == 0)
+        {
+            txt_value.SetText(value.ToString());
+        }
+        if (type == 1)
+        {
+            txt_value.SetText(value.ToString());
+        }
+        if (type == 2)
+        {
+            txt_value.SetText(value.ToString() + " sec");
+        }
+        if (type == 3)
+        {
+            txt_value.SetText((value*10).ToString() + "%");
+        }
+
     }
 
     public void Construct(int type, int grade, int value)
@@ -74,5 +90,7 @@ public class UpgradeMenuItem : MonoBehaviour
         {
             PlayerStats.Instance.SetSkillCooltime(value);
         }
+
+        upgradeSystem.onItemSelected.Invoke();
     }
 }

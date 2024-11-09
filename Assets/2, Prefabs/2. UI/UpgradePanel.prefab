@@ -366,6 +366,9 @@ MonoBehaviour:
   onItemLocked:
     m_PersistentCalls:
       m_Calls: []
+  onItemSelected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3188760412624951466
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,7 +756,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9047246776447742770}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2754865968039191920}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6604262234736236055
 GameObject:
   m_ObjectHideFlags: 0
@@ -1046,6 +1061,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3097871093559686127, guid: 878f07e374d591144be91453413d680d, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 9076570185954783595}
     - target: {fileID: 4476864460769397609, guid: 878f07e374d591144be91453413d680d, type: 3}
       propertyPath: m_Name
       value: UpgradeMenu (3)
@@ -1060,6 +1079,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2383325878629825390, guid: 878f07e374d591144be91453413d680d, type: 3}
   m_PrefabInstance: {fileID: 1977765240364551350}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &9076570185954783595 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7387059523111304669, guid: 878f07e374d591144be91453413d680d, type: 3}
+  m_PrefabInstance: {fileID: 1977765240364551350}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5303790117340851170
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1152,6 +1182,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3097871093559686127, guid: 878f07e374d591144be91453413d680d, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 3395365014077642303}
     - target: {fileID: 4476864460769397609, guid: 878f07e374d591144be91453413d680d, type: 3}
       propertyPath: m_Name
       value: UpgradeMenu (1)
@@ -1161,6 +1195,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 878f07e374d591144be91453413d680d, type: 3}
+--- !u!114 &3395365014077642303 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7387059523111304669, guid: 878f07e374d591144be91453413d680d, type: 3}
+  m_PrefabInstance: {fileID: 5303790117340851170}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &7532726951277875340 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2383325878629825390, guid: 878f07e374d591144be91453413d680d, type: 3}
@@ -1258,6 +1303,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3097871093559686127, guid: 878f07e374d591144be91453413d680d, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 2048840958171576758}
     - target: {fileID: 4476864460769397609, guid: 878f07e374d591144be91453413d680d, type: 3}
       propertyPath: m_Name
       value: UpgradeMenu
@@ -1267,6 +1316,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 878f07e374d591144be91453413d680d, type: 3}
+--- !u!114 &2048840958171576758 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7387059523111304669, guid: 878f07e374d591144be91453413d680d, type: 3}
+  m_PrefabInstance: {fileID: 8857149454543832171}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6627518276599070469 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2383325878629825390, guid: 878f07e374d591144be91453413d680d, type: 3}
@@ -1364,6 +1424,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3097871093559686127, guid: 878f07e374d591144be91453413d680d, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 1748380297378453904}
     - target: {fileID: 4476864460769397609, guid: 878f07e374d591144be91453413d680d, type: 3}
       propertyPath: m_Name
       value: UpgradeMenu (2)
@@ -1373,6 +1437,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 878f07e374d591144be91453413d680d, type: 3}
+--- !u!114 &1748380297378453904 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7387059523111304669, guid: 878f07e374d591144be91453413d680d, type: 3}
+  m_PrefabInstance: {fileID: 9135382392700134477}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6905183302517661475 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2383325878629825390, guid: 878f07e374d591144be91453413d680d, type: 3}
