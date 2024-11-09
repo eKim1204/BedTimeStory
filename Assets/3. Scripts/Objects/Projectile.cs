@@ -32,7 +32,7 @@ public class Projectile : MonoBehaviour
     {
         // Damage Enemy
         //DamageEnemy(other);
-        EventManager.Instance.PostNotification(MEventType.EnemyHitted, this, new TransformEventArgs(transform, true));
+        // EventManager.Instance.PostNotification(MEventType.EnemyHitted, this, new TransformEventArgs(transform, true));
         Explode();
         //StartCoroutine(DestroyParticle(0f));
     }

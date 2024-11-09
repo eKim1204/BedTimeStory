@@ -35,6 +35,9 @@ public class Enemy : MonoBehaviour
     public float stunDurationRemain;
     public bool stunned => stunDurationRemain > 0;
 
+    public float lastAttackTime;
+    public bool attackAvailable => Time.time >= lastAttackTime + enemyData.attackSpeed;
+
 
     Slider_EnemyHp enemyState;
     //===================================
@@ -65,7 +68,7 @@ public class Enemy : MonoBehaviour
         }
 
         // 스턴걸리면 아래까지 안내려가게.
-        //enemyAI.OnUpdate();
+        enemyAI.OnUpdate();
     }    
 
 
@@ -86,7 +89,7 @@ public class Enemy : MonoBehaviour
         InitStatus(waveNum);
         
 
-        //enemyAI.Init( this, waveNum);
+        enemyAI.Init( this, waveNum);
 
 
         enemyState = EnemyCanvas.Instance.Generate_EnemyHpBar();
@@ -191,6 +194,11 @@ public class Enemy : MonoBehaviour
         Debug.Log($"아이템 드랍  r {rand} : {str}");
     }
 
+
+    public void OnAttack()
+    {
+        lastAttackTime = Time.time;
+    }
 
 
 

@@ -119,7 +119,12 @@ public class EnemyAI : MonoBehaviour
         navAgent.velocity = Vector3.zero;
     }
 
+    //==================================
 
+    void OnAttack()
+    {
+        
+    }
 
 
 }
