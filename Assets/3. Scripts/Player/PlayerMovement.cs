@@ -1,17 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    //일단 사용하지 않습니다.
-    enum PlayerState
-    {
-        None,
-        Walk,
-        Run,
-        //etc..
-    }
     [SerializeField] public float moveSpeed = 3f;
     [HideInInspector] public Vector3 dir;
     float hInput, vInput;
@@ -33,15 +26,21 @@ public class PlayerMovement : MonoBehaviour
     {
         hInput = Input.GetAxis("Horizontal");
         vInput = Input.GetAxis("Vertical");
-
+        
         dir = transform.forward * vInput + transform.right * hInput;
-        if(IsRun())
+        
+        if(hInput == 0 && vInput == 0)
+            PlayerStats.Instance.playerStatus = PlayerStats.Status.Idle;
+        else if(IsRun())
         {
-            Debug.Log("State -> Run!");
+            PlayerStats.Instance.playerStatus = PlayerStats.Status.Walk;
             controller.Move(dir * (moveSpeed * 5f) * Time.deltaTime);
-        }   
+        }
         else
+        {
+            PlayerStats.Instance.playerStatus = PlayerStats.Status.Run;
             controller.Move(dir * moveSpeed * Time.deltaTime);
+        }
     }
     // Update is called once per frame
     void Update()
@@ -65,12 +64,5 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -2;
 
         controller.Move(velocity * Time.deltaTime);
-
     }
-
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.red;
-    //    Gizmos.DrawWireSphere(spherePos, controller.radius - 0.05f);
-    //}
 }
