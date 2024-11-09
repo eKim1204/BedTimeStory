@@ -81,6 +81,7 @@ public class Enemy : MonoBehaviour
     {
         t = transform;
         
+        // this.enemyData = enemyData;
         enemyAI = GetComponent<EnemyAI>();
         
 
@@ -109,10 +110,10 @@ public class Enemy : MonoBehaviour
         currHp = maxHp;
     }
 
-    void OnTriggerEnter(Collider other)
-    {
+    // void OnTriggerEnter(Collider other)
+    // {
         // lastHitPoint = other.ClosestPoint(transform.position);
-    }
+    // }
 
 
     //======================================================

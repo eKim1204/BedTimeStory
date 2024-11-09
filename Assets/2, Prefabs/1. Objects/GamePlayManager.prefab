@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6695eb9187168345afddfa52f57bfc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bgm: {fileID: 11400000, guid: 3b315de47a359624c88b06bcacd9e35b, type: 2}
   testWaveStartBtn: {fileID: 0}
 --- !u!114 &7045760442429964645
 MonoBehaviour:
@@ -60,6 +61,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveInfoUI: {fileID: 0}
+  enemyPrefabs:
+  - {fileID: 7331839071635631618, guid: 3c27962e059ae4643b9984e4ba0fc482, type: 3}
+  - {fileID: 7331839071635631618, guid: 1677b1894bfe8f64e923931e9292f71f, type: 3}
   prefab_enemy: {fileID: 7331839071635631618, guid: 3c27962e059ae4643b9984e4ba0fc482, type: 3}
   stageWaveInfo: {fileID: 11400000, guid: 7360a3e7c85a9964a9b5cbdb0bad87ab, type: 2}
   clearedWaveNum: 0

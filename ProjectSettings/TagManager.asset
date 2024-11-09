@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - Projectile
   - DropItem
+  - EnemyProj
+  - Tower
   layers:
   - Default
   - TransparentFX
@@ -18,7 +20,7 @@ TagManager:
   - Enemy
   - Wall
   - Tower
-  - 
+  - EnemyProjectile
   - 
   - 
   - 

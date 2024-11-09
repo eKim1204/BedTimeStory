@@ -8,7 +8,7 @@ public class WaveManager : DestroyableSingleton<WaveManager>
 {
     [SerializeField] WaveInfoUI waveInfoUI;
     
-    
+    public List<GameObject> enemyPrefabs = new();
     
     public GameObject prefab_enemy;
 
@@ -119,8 +119,11 @@ public class WaveManager : DestroyableSingleton<WaveManager>
             {
                 Vector3 spawnPos = Stage.Instance.GetRandomSpawnPoint();
                 
-                Enemy enemy = Instantiate( prefab_enemy,spawnPos,Quaternion.identity ).GetComponent<Enemy>();  
-                enemy.Init(clearedWaveNum);
+                int idx = Random.Range(0, enemyPrefabs.Count); 
+                GameObject enemyPrefab =  enemyPrefabs[idx];
+                
+                Enemy enemy = Instantiate( enemyPrefab,spawnPos,Quaternion.identity ).GetComponent<Enemy>();  
+                enemy.Init( clearedWaveNum);
             }
 
             currSpawnCount += spawnPerCycle;        //2초마다이면 1초마다 어느정도는 소환하도록 수정할 예정. 

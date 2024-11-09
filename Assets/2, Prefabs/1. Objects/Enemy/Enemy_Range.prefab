@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8407753709932845091}
   - component: {fileID: 7448329445168510926}
   m_Layer: 7
-  m_Name: Enemy
+  m_Name: Enemy_Range
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,7 +54,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7331839071635631618}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -98,7 +98,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 7331839071635631618}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 1
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -107,7 +107,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 4
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -141,7 +141,7 @@ MonoBehaviour:
   aniamtor: {fileID: 1585412625004070739}
   t: {fileID: 0}
   enemyAI: {fileID: 0}
-  enemyData: {fileID: 11400000, guid: 1b68e9c614caf8549b02a33123831af6, type: 2}
+  enemyData: {fileID: 11400000, guid: b77a877f0b0efae41b38650df5028e91, type: 2}
   maxHp: 0
   currHp: 0
   dmg: 0

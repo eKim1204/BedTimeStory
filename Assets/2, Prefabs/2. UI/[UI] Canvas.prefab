@@ -1547,8 +1547,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25044804d136ae84faee4beaa1ac43c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UpgradePanel: {fileID: 898396418471904474}
-  optionPanel: {fileID: 0}
+  upgradePanel: {fileID: 898396418471904474}
+  optionPanel: {fileID: 2388203955062759439}
 --- !u!114 &6318863969456975246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3003,11 +3003,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: OptionPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 8844820329063139824, guid: 590253db6f97e4a4b9fef268cdcdb2be, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 590253db6f97e4a4b9fef268cdcdb2be, type: 3}
+--- !u!1 &2388203955062759439 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8844820329063139824, guid: 590253db6f97e4a4b9fef268cdcdb2be, type: 3}
+  m_PrefabInstance: {fileID: 6601019084635417087}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &2958572253637528603 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8256631008567289316, guid: 590253db6f97e4a4b9fef268cdcdb2be, type: 3}

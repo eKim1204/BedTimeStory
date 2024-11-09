@@ -23,7 +23,18 @@ namespace GameUtil
         }
         public static Vector3 WithWaistHeight(this Vector3 pos)
         {
+            return new Vector3(pos.x,0.5f,pos.z);
+        }
+
+        public static Vector3 WithHeadHeight(this Vector3 pos)
+        {
             return new Vector3(pos.x,1,pos.z);
+        }
+
+        
+        public static Vector3 WithTestHeight(this Vector3 pos)
+        {
+            return new Vector3(pos.x,1.5f,pos.z);
         }
     }
 

@@ -4,25 +4,30 @@ using UnityEngine;
 
 using GameUtil;
 
-[CreateAssetMenu(fileName = "EnemyInitData", menuName = "SO/EnemyData", order = int.MaxValue)]
-public class EnemyDataSO : ScriptableObject
+
+[CreateAssetMenu(fileName = "EnemyInitData_Melee", menuName = "SO/EnemyData/00_Melee", order = int.MaxValue)]
+public class EnemyData_Melee : EnemyDataSO
 {
-    public float maxHp = 100;
     
-    public float movementSpeed = 4;
-    public float attackSpeed = 2;    
-    public float attackRange = 1.5f;
-    public float playerDectectionRange = 10;
+    public EnemyData_Melee()
+    {
+           maxHp = 100;
+    
+        movementSpeed = 4;
+        attackSpeed = 2;    
+        attackRange = 1.5f;
+        playerDectectionRange = 10;
 
-    public float dmg = 10;
+        dmg = 10;
 
 
-    public float inc_maxHp = 10;
-    public float inc_movementSpeed = 0.3f;
-    public float inc_dmg = 3;
-
-
-    public void Attack(Enemy enemy, Vector3 targetPos)
+        inc_maxHp = 10;
+        inc_movementSpeed = 0.3f;
+        inc_dmg = 3;
+    }
+    
+    
+    public override void Attack(Enemy enemy, Vector3 targetPos)
     {
         // Vector3 dir = (targetPos - enemy.t.position).WithFloorHeight().normalized;
         float radius = 1;
@@ -52,5 +57,4 @@ public class EnemyDataSO : ScriptableObject
             }
         }
     }
-    
 }

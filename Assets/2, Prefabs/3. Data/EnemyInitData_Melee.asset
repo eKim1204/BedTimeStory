@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15d2f008306b8de469cdecde34007766, type: 3}
-  m_Name: EnemyInitData
+  m_Script: {fileID: 11500000, guid: a96b830e9d6f2b048a3b5271107b04bc, type: 3}
+  m_Name: EnemyInitData_Melee
   m_EditorClassIdentifier: 
   maxHp: 100
   movementSpeed: 4
   attackSpeed: 2
-  attackRange: 2
+  attackRange: 1.5
   playerDectectionRange: 10
   dmg: 10
   inc_maxHp: 10
